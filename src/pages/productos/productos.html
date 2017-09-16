@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+    Productos
+    </ion-title>
+    <ion-buttons start>
+    	<button ion-button (click)="AgregarProducto()">
+    		<ion-icon name="add-circle"></ion-icon>
+    	</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar"></ion-searchbar>
+	<table  class="table table-striped table-hover">
+		<thead class="thead-inverse">
+			<tr clas="Titulo_tabla">
+					<th padding >Descripcion</th>
+					<th padding>Stock</th>
+					<th padding>Precio</th>
+					<th></th>
+					<th></th>
+					<th></th>
+			<tr>
+		</thead>
+		<tbody>
+							<tr class="columna" *ngFor="let u of productos | async">
+							<td >{{ u.nombre }}   </td>
+							<td > {{ u.cantidad }} </td>
+							<td >  ${{ u.precio }}</td> 
+							<td > 
+								<button ion-button (click)="ActualizarProducto(u)">
+										<ion-icon name="create"></ion-icon>
+								</button>
+							 </td> 
+							 <td> 
+							 	<button ion-button color="danger"  (click)="removeUser(u)">
+										<ion-icon name="trash"></ion-icon>
+								</button>
+							 </td> 
+							 <td> 
+								<button ion-button color="green"  (click)="AgregarAPedido(u)">
+									   <ion-icon name="cart"></ion-icon>
+							   </button>
+							</td> 
+						<tbody>
+	</table>
+		
+  <!-- <ion-list>
+  	<ion-item-sliding *ngFor="let u of productos | async">
+  		<ion-item >
+  			<ion-label>
+  				<h2>Nombre: {{ u.nombre }}   ${{ u.precio }} </h2>
+  				<h3>Stock: {{ u.cantidad }}</h3>
+  			</ion-label>
+  		</ion-item>
+  		<ion-item-options>
+  			<button ion-button (click)="ActualizarProducto(u)">
+  				Editar
+  			</button>
+  			<button ion-button color="danger"  (click)="removeUser(u)">
+  				Borrar
+  			</button>
+  		</ion-item-options>
+  	</ion-item-sliding>
+	</ion-list> -->
+	
+</ion-content>
