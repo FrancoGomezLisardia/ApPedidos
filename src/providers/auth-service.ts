@@ -20,10 +20,12 @@ export class AuthService {
     }
 
     signInWithEmailAndPassword(userModel: UserModel): Promise<any> {
+        
         return this.angularFireAuth.auth.signInWithEmailAndPassword(userModel.email, userModel.password);
     }
 
     createUserWithEmailAndPassword(userModel: UserModel): Promise<any> {
+      
         return this.angularFireAuth.auth.createUserWithEmailAndPassword(userModel.email, userModel.password);
     }
 
