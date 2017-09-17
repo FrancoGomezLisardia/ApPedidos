@@ -27,7 +27,7 @@ export class MyApp {
     splashScreen: SplashScreen
   ) {
 
-    this.rootPage = FormularioPage;
+    this.rootPage = SignInPage;
     this.pages = [
       
       { titulo: 'Inicio',          component: HomePage,      icon: 'home'},
