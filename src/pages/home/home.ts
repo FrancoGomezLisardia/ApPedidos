@@ -7,6 +7,7 @@ import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable }
 import * as firebase from 'firebase/app';
 import { Observable } from "rxjs/Observable";
 import { SignInPage }           from '../../pages/signin/signin';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'

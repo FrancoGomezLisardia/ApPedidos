@@ -6,23 +6,31 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Pedidos</ion-title>
+  <ion-navbar color="primary">
+    <ion-title text-center>Pedidos</ion-title>
   </ion-navbar>
 
 </ion-header>
 <ion-content padding>
-    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-    <ion-list>
-
-    </ion-list>
-<button ion-button block roud (click)="showRadio()">Alerta Radio</button>
-<ion-grid>
-    <ion-row>
-      <ion-col col-12>This column will take 12 columns</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-6>This column will take 6 columns</ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-item>
+    <ion-label>Cliente</ion-label>
+    <ion-select>
+      <ion-option *ngFor="let employee of clientes | async" [value]="employee">{{ employee.nombre }},{{ employee.apellido }}  </ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label> Pedidos</ion-label>
+    <ion-select multiple="true">
+      <ion-option *ngFor="let employee of pedidos | async" [value]="employee">{{ employee.nombre }}-Cantidad:{{ employee.cantidad }}-Total:${{ employee.precio }}   </ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+      <ion-label> Vendedor</ion-label>
+      <ion-select multiple="true">
+        <ion-option *ngFor="let employee of vendedor | async" [value]="employee">{{ employee.nombre }}-Cantidad:{{ employee.cantidad }}-Total:${{ employee.precio }}   </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label> Total:$</ion-label>
+      </ion-item>
 </ion-content>

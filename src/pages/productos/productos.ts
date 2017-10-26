@@ -25,7 +25,7 @@ pedidos:FirebaseListObservable<any>;
     public fireDatabase: AngularFireDatabase
   ) {
     this.productos = this.fireDatabase.list('/Productos');
-    this.pedidos=this.fireDatabase.list('/Pedidos');
+    this.pedidos=this.fireDatabase.list('/PedidosSinConfirmar');
     let loading = this.loadingCtrl.create({
       content: 'Cargando pagina. Por favor, espere...'
   });
@@ -59,16 +59,29 @@ pedidos:FirebaseListObservable<any>;
   }
   AgregarAPedido(u){
     let newTaskModal = this.alertCtrl.create({
-      title:"Nuevo Pedido",
-     message: u.nombre,
-     
+      title: 'Agregar a Pedidos',
+      message: u.nombre,
       inputs: [
-              {
-          name: 'Stock:',
+        // {
+        //   name: 'nombre',
+        //   placeholder: 'Nombre:'
+        // },
+        {
+          name: 'cantidad',
           placeholder: 'Cantidad:'
         },
-              
-              ],
+        // {
+        //   name: 'precio',
+        //   placeholder: 'Precio:'
+        // },
+        //  {
+           
+        //   name: 'rubro',
+        //   placeholder: 'Rubro:'
+        // },
+        
+        
+      ],
       buttons: [
         {
           text: 'Cancelar',
@@ -77,12 +90,13 @@ pedidos:FirebaseListObservable<any>;
           }
         },
         {
-          text: 'Agregar a Pedido',
+          text: 'Guardar',
           handler: data => {
             this.pedidos.push({
              	nombre: u.nombre,
   						cantidad: data.cantidad,
-              total:u.precio*data.cantidad,
+              precio:u.precio*data.cantidad
+              //rubro:data.rubro,
             });
           }
         }

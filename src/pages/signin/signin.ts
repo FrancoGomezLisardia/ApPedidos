@@ -49,6 +49,11 @@ user = firebase.auth().currentUser;
         
    
     signIn() {
+        // if(this.userModel){
+        // alert("El user está autenticado con identificador: ");
+        //    }else{
+        //  alert("Usuario no autenticado");
+        //    }
         let loading = this.loadingCtrl.create({
             content: 'Iniciando sesión. Por favor, espere...'
         });
@@ -56,7 +61,7 @@ user = firebase.auth().currentUser;
 
         this.authService.signInWithEmailAndPassword(this.userModel).then(result => {
             loading.dismiss();
-          if (""){}
+          
            this.navCtrl.setRoot(HomePage);
             
          

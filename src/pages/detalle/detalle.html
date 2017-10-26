@@ -15,27 +15,43 @@
 
 <ion-content >
   <ion-list>
-    
-      <ion-item>
+         <ion-item>
+        <ion-icon name="person" item-left></ion-icon>
         <ion-label floating>Nombre</ion-label>
-        <ion-input type="text" [(ngModel)]="note.title"></ion-input>
+        <ion-input type="text" [(ngModel)]="note.nombre"></ion-input>
       </ion-item>
     
       <ion-item>
         <ion-label floating>Apellido</ion-label>
-        <ion-input type="text" [(ngModel)]="note.descripcion"></ion-input>
+        <ion-input type="text" [(ngModel)]="note.apellido"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label floating>Direccion</ion-label>
-        <ion-input type="text" [(ngModel)]="note.descripcion"></ion-input>
+          <ion-icon name="calendar" item-left></ion-icon>
+          <ion-label stacked>Fecha de nacimiento:</ion-label>
+          <ion-input  type="text" [(ngModel)]="note.fecha_nacimiento"></ion-input>
+        </ion-item>
+      <ion-item>
+          <ion-icon name="person" item-left></ion-icon>
+          <ion-label stacked>DNI:</ion-label>
+          <ion-input  type="text" [(ngModel)]="note.dni"></ion-input>
       </ion-item>
       <ion-item>
+         <ion-icon name="home" item-left></ion-icon>
+        <ion-label floating>Domicilio</ion-label>
+        <ion-input type="text" [(ngModel)]="note.Direccion"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-icon name="call" item-left></ion-icon>
         <ion-label floating>Telefono</ion-label>
-        <ion-input type="text" [(ngModel)]="note.descripcion"></ion-input>
+        <ion-input type="text" [(ngModel)]="note.Telefono"></ion-input>
       </ion-item>
-    
+      <ion-item>
+          <ion-icon name="mail" item-left></ion-icon>
+          <ion-label stacked>Correo electrónico</ion-label>
+          <ion-input type="email" [(ngModel)]="note.email"></ion-input>
+      </ion-item> 
     </ion-list>
     <div padding>
-    <button ion-button block (click)="AddNote()">Agregar</button>
+    <button ion-button block (click)="AddNote(u)">Actualizar</button>
     </div>
 </ion-content>

@@ -12,7 +12,7 @@ import { SignInPage }           from '../pages/signin/signin';
 import { SignUpPage }           from '../pages/signup/signup';
 import {RegistrarPage}          from '../pages/registrar/registrar';
 import {FormularioPage}         from '../pages/formulario/formulario';
-
+import {AdiminClientesPage}       from '../pages/adimin-clientes/adimin-clientes';
 @Component({
   templateUrl: 'app.html'
 })
@@ -27,14 +27,14 @@ export class MyApp {
     splashScreen: SplashScreen
   ) {
 
-    this.rootPage = SignInPage;
+    this.rootPage = HomePage;
     this.pages = [
       
       { titulo: 'Inicio',          component: HomePage,      icon: 'home'},
       { titulo: 'Productos',       component: ProductosPage, icon: 'cart'},
-      { titulo: 'Clientes',        component: ClientesPage,  icon: 'person-add'},
+      { titulo: 'Clientes',        component: AdiminClientesPage,  icon: 'person-add'},
       { titulo: 'Pedidos',         component: PedidosPage,   icon: 'list-box'},
-      { titulo: 'Registrar',       component: SignUpPage,  icon: 'list-box'}
+      { titulo: 'Registrar',       component: SignUpPage,    icon: 'person-add'}
     ];
 
     platform.ready().then(() => {

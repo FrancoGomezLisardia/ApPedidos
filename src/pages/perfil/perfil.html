@@ -5,12 +5,9 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar color="primary">
-
     <ion-title text-center>Perfil</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
@@ -36,6 +33,16 @@
       </ion-item>
 
       <ion-item>
+        <ion-icon name="person" item-left></ion-icon>
+        <ion-label stacked>DNI:</ion-label>
+        <ion-input formControlName="DNI" type="text" placeholder="DNI"></ion-input>
+    </ion-item>
+    <div *ngIf="formErrors.username">
+      <div *ngFor="let errors of formErrors.DNI" >
+        <p class="alert">{{ errors }}<p>
+      </div>
+    </div>
+      <ion-item>
         <ion-icon name="call" item-left></ion-icon>
         <ion-label stacked>Telefono:</ion-label>
         <ion-input  formControlName="telefono" type="number" placeholder="Telefono"></ion-input>
@@ -46,18 +53,6 @@
         <ion-label stacked>Domicilio:</ion-label>
         <ion-input  formControlName="domicilio" type="text" placeholder="Domicilio"></ion-input>
       </ion-item>
-
-      <ion-item>
-         <ion-icon name="mail" item-left></ion-icon>
-         <ion-label stacked>Correo Electronico:</ion-label>
-         <ion-input  formControlName="email" type="email" placeholder="Email"></ion-input>
-      </ion-item>
-       
-            <ion-item>
-              <ion-icon name="eye" item-left></ion-icon>
-              <ion-label stacked>Contraseña:</ion-label>
-              <ion-input  formControlName="password" type="password" placeholder="Contraseña"></ion-input>
-            </ion-item>
             
         
           <ion-row radio-group formControlName="gender">

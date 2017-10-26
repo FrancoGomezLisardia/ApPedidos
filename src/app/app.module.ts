@@ -17,7 +17,8 @@ import {PerfilPage}             from '../pages/perfil/perfil';
 import {DetallePage}            from '../pages/detalle/detalle';
 import {RegistrarPage}          from '../pages/registrar/registrar';
 import {FormularioPage}          from '../pages/formulario/formulario';
-
+import {NuevoClientePage}       from '../pages/nuevo-cliente/nuevo-cliente';
+import {AdiminClientesPage}       from '../pages/adimin-clientes/adimin-clientes';
 import { AngularFireModule }         from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule }     from 'angularfire2/auth';
@@ -45,10 +46,12 @@ export const firebaseConfig = {
     SignInPage ,
     SignUpPage,
     PerfilPage,
+    NuevoClientePage,
 
     DetallePage,
     RegistrarPage,
-    FormularioPage
+    FormularioPage,
+    AdiminClientesPage
   ],
   imports: [
     BrowserModule,
@@ -66,14 +69,15 @@ export const firebaseConfig = {
     PedidosPage,
     PerfilPage,
      VendedoresPage,
-    
+     NuevoClientePage,
     SignInPage ,
     SignUpPage,
 
     DetallePage,
     RegistrarPage,
 
-    FormularioPage
+    FormularioPage,
+    AdiminClientesPage
   ],
   providers: [
     StatusBar,
