@@ -8,12 +8,18 @@ import * as firebase from 'firebase/app';
 import { Observable } from "rxjs/Observable";
 import { SignInPage }           from '../../pages/signin/signin';
 
+import { ModalController } from 'ionic-angular';
+import {NuevoProductoPage} from "../nuevo-producto/nuevo-producto"
+import {CargaImagenProductoProvider} from "../../providers/carga-imagen-producto/carga-imagen-producto";
+
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
  mi_perfil:any;
+ hayMas:boolean = true;
   user: Observable<firebase.User>;
   perfilDatos: FirebaseObjectObservable <any>;
   productos: FirebaseListObservable<any>
@@ -23,6 +29,8 @@ export class HomePage {
   public navCtrl:NavController,
   public navParams:NavParams,
   public menuCtrl: MenuController,
+  private _cap: CargaImagenProductoProvider,
+  private modalCtrl: ModalController
  
 ) {
 const db = firebase.database();
@@ -61,5 +69,39 @@ ionViewWilload() {
     }
   })
 }
-  }
+
+mostrar_modal(){
+
+  let modal = this.modalCtrl.create( NuevoProductoPage );
+  modal.present();
+
+}
+
+
+doInfinite(infiniteScroll) {
+  console.log('Begin async operation');
+
+  this._cap.cargar_imagenes().then(
+    ( hayMas:boolean )=> {
+
+      console.log(hayMas);
+      this.hayMas = hayMas;
+
+      infiniteScroll.complete();
+    }
+  );
+
+}
+
+compartir( post:any ){
+
+  // this.socialSharing.shareViaFacebook( post.titulo, post.img, post.img )
+  //   .then( ()=>{} ) // se pudo compartir
+  //   .catch( ()=>{} ) // si sucede un error
+
+}
+
+}
+
+  
 

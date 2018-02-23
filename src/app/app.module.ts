@@ -22,9 +22,20 @@ import {AdiminClientesPage}       from '../pages/adimin-clientes/adimin-clientes
 import { AngularFireModule }         from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule }     from 'angularfire2/auth';
-
+import { Productos2Page }        from '../pages/productos2/productos2';
+import {  NuevoProductoPage}        from '../pages/nuevo-producto/nuevo-producto';
 import { AuthService } from '../providers/auth-service';
 import { NotesService } from '../providers/notes.servise';
+import { CarritoProvider } from '../providers/carrito';
+import { ProductosProvider } from '../providers/productos/productos';
+import {DetalleProductoPage} from "../pages/detalle-producto/detalle-producto";
+
+//Plugins
+import { Camera} from '@ionic-native/camera';
+import { ImagePicker } from '@ionic-native/image-picker';
+import { CargaImagenProductoProvider } from '../providers/carga-imagen-producto/carga-imagen-producto';
+import { CarroProvider } from '../providers/carro/carro';
+
 
 export const firebaseConfig = {
  apiKey: "AIzaSyCeLmkUIANCNvjQU0IRhiqjxYQKr6ds_UI",
@@ -47,11 +58,13 @@ export const firebaseConfig = {
     SignUpPage,
     PerfilPage,
     NuevoClientePage,
-
+    Productos2Page,
+    NuevoProductoPage,
     DetallePage,
     RegistrarPage,
     FormularioPage,
-    AdiminClientesPage
+    AdiminClientesPage,
+    DetalleProductoPage
   ],
   imports: [
     BrowserModule,
@@ -72,10 +85,11 @@ export const firebaseConfig = {
      NuevoClientePage,
     SignInPage ,
     SignUpPage,
-
+    Productos2Page,
+    NuevoProductoPage,
     DetallePage,
     RegistrarPage,
-
+    DetalleProductoPage,
     FormularioPage,
     AdiminClientesPage
   ],
@@ -84,7 +98,13 @@ export const firebaseConfig = {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthService,
-    NotesService
+    NotesService,
+    CarritoProvider,
+    ProductosProvider,
+    Camera,
+    ImagePicker,
+    CargaImagenProductoProvider,
+    CarroProvider
   ]
 })
 export class AppModule {}

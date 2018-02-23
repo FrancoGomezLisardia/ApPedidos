@@ -1,5 +1,8 @@
 {
   "name": "SoftwareAppedidos",
   "app_id": "719a1c25",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }

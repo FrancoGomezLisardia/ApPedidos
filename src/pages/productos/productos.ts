@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController,LoadingController } from 'ionic-angular';
 import { FirebaseListObservable, AngularFireDatabase  } from 'angularfire2/database';
+import {CargaImagenProductoProvider} from "../../providers/carga-imagen-producto/carga-imagen-producto";
+import {CarroProvider} from"../../providers/carro/carro"
 /**
  * Generated class for the ProductosPage page.
  *
@@ -19,6 +21,7 @@ pedidos:FirebaseListObservable<any>;
   searchQuery: string = '';
   items: string[];
   constructor(
+     
     public loadingCtrl: LoadingController,
     public navCtrl: NavController,
     public alertCtrl: AlertController,

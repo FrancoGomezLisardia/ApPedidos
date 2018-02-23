@@ -84,7 +84,7 @@ export class SignUpPage {
             loading.dismiss();
 
             console.log(error);
-            this.alert('Error', 'Ha ocurrido un error inesperado. Por favor intente nuevamente.');
+            this.alert('Error', 'Ha ocurrido un error inesperado. Por favor intente ingresando un correo diferente.');
         });
     }
 

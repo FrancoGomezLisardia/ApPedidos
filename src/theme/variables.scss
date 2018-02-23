@@ -38,9 +38,22 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  
 );
-
+.carrito_vacio{
+  position:relative;
+  top: 30%;
+  font-size: 20px;
+}
+.icon-5x{
+  font-size:100px;
+}
+.carrito-numero{
+  position:absolute;
+  top:-5px;
+  left:18px;
+}
 
 // App iOS Variables
 // --------------------------------------------------
