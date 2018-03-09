@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { formulario } from "../../models/formulario";
 
-import { Firebase_Data } from '../../providers/firebase-data';
+
+
 
 /**
  * Generated class for the FormularioPage page.
@@ -20,12 +20,12 @@ import { Firebase_Data } from '../../providers/firebase-data';
 export class FormularioPage {
   datosFomr:FirebaseListObservable<any>;
   myForm: FormGroup;
-  DatosFirebase:Firebase_Data;
+  
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public formBuilder: FormBuilder,
               public fireDatabase: AngularFireDatabase) {
-               this.DatosFirebase = new Firebase_Data();
+              
                 this.myForm = this.createMyForm();
   this.datosFomr = this.fireDatabase.list('/datosForm');
   }
@@ -37,14 +37,14 @@ export class FormularioPage {
   //   alert("guardado")
   // }
   addUser(){
-    if (!this.myForm.valid){
-      console.log("Nice try!");
-    } else {
-      this.DatosFirebase.saveData(this.myForm.value.name, this.myForm.value.lastName).then( () => {
-          this.myForm.reset();
-        });
-        alert("vamo la puta madre");
-    }
+    // if (!this.myForm.valid){
+    //   console.log("Nice try!");
+    // } else {
+    //   this.DatosFirebase.saveData(this.myForm.value.name, this.myForm.value.lastName).then( () => {
+    //       this.myForm.reset();
+    //     });
+    //     alert("vamo la puta madre");
+    // }
   
   }
   // saveData( name,lastName) {

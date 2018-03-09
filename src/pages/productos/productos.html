@@ -1,23 +1,86 @@
 <ion-header>
-  <ion-navbar color="primary">
-    <ion-title text-center>
-    Productos
-	</ion-title>
-	<ion-buttons left>
-		<button ion-button menuToggle>
-		 <ion-icon  name="menu"></ion-icon>
-		</button> 	
-	   </ion-buttons>
-    <ion-buttons start>
-    	<button ion-button (click)="AgregarProducto()">
-    		<ion-icon name="add-circle"></ion-icon>
-    	</button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header>
+
+		<ion-navbar color="primary">
+			<ion-buttons left>
+				<button ion-button menuToggle>
+				 <ion-icon  name="menu"></ion-icon>
+				</button>
+			   </ion-buttons>
+		  <ion-title text-center >
+			Productos
+		  </ion-title>
+		  <ion-buttons end>
+			 <button ion-button icon-only (click)="irAPaginaCarrito()">
+				<ion-icon name="cart"></ion-icon>
+				<ion-badge color="danger"
+						   class="carrito-numero">
+						   {{this.cantidadProdEnCarrito}}
+			  </ion-badge>
+			 </button>
+	  
+			 &nbsp;
+			 &nbsp;
+		  </ion-buttons>
+		</ion-navbar>
+	  
+	  </ion-header>
 
 <ion-content padding>
-	<ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar"></ion-searchbar>
+		<ion-searchbar (ionInput)="getItems2($event)" placeholder="Buscar"></ion-searchbar>
+		<ion-grid>
+			<ion-row *ngFor="let country of countryList" >
+				<ion-col>
+					<button ion-item (click)="IrADetalleProducto(country)">
+						<ion-card >
+							<img align="center" style="width: 250px; height: 250px;"  [src]="country.img">
+							<ion-card-content>
+							<ion-card-title>
+							 {{ country.titulo }}
+						
+							 ${{ country.precio }}
+							</ion-card-title>
+							
+							</ion-card-content>
+		
+						</ion-card>	
+					</button>
+					<ion-fab top right>
+						<button ion-fab mini color="danger" (click)="modificar(country)">
+							<ion-icon name="create"></ion-icon></button>
+						<button ion-fab mini color="danger"(click)="eliminar(country)">
+							<ion-icon name="trash"></ion-icon>
+						</button>
+					</ion-fab>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+		<!-- <ion-list>
+			<button ion-item *ngFor="let country of countryList" (click)="IrADetalleProducto(country)">
+				<ion-card >
+					<img align="center" style="width: 250px; height: 250px;"  [src]="country.img">
+					<ion-card-content>
+					<ion-card-title>
+					 {{ country.titulo }}
+				
+					 ${{ country.precio }}
+					</ion-card-title>
+					<ion-fab bottom right>
+						<button ion-fab mini color="danger"><ion-icon name="create"></ion-icon></button>
+						
+					</ion-fab>
+					</ion-card-content>
+
+				</ion-card>	
+			</button>
+		</ion-list> -->
+	<ion-fab bottom right>
+		<button ion-fab mini color="danger" (click)="nuevoProducto()">
+		  <ion-icon name="add"></ion-icon>
+		</button>
+
+		
+	</ion-fab>
+	<!-- <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar"></ion-searchbar>
 	<table  class="table table-striped table-hover">
 		<thead class="thead-inverse">
 			<tr clas="Titulo_tabla">
@@ -51,7 +114,7 @@
 							</td> 
 						<tbody>
 	</table>
-		
+		 -->
   <!-- <ion-list>
   	<ion-item-sliding *ngFor="let u of productos | async">
   		<ion-item >

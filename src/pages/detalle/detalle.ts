@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { NotesService } from "../../providers/notes.servise";
-import { Clientes }             from "../../models/clientes";
+
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 /**
@@ -20,7 +20,7 @@ export class DetallePage {
   
 note = {id:null, nombre:null,apellido:null, Direccion:null,Telefono:null,email:null,fecha_nacimiento:null};
 id:null;
-model_clientes = {} as Clientes;
+
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
     public notesService:NotesService,
@@ -46,14 +46,14 @@ model_clientes = {} as Clientes;
   AddNote(u){
     // if (this.id !=0){
       //editamos
-      this.clientes.update( u.$key, {
-        nombre:this.model_clientes.nombre ,
-        apellido:this.model_clientes.apellido,
-        direccion: this.model_clientes.Direccion,
-        telefono:this.model_clientes.Telefono,
+      // this.clientes.update( u.$key, {
+      //   nombre:this.model_clientes.nombre ,
+      //   apellido:this.model_clientes.apellido,
+      //   direccion: this.model_clientes.Direccion,
+      //   telefono:this.model_clientes.Telefono,
         
-      }
-    );
+      
+    
       // this.note.id=Date.now();
       // this.notesService.editNotes(this.note);
       // alert("Cliente Editado");
@@ -64,14 +64,14 @@ model_clientes = {} as Clientes;
     // alert("Cliente Creado");
     
   // }
-  this.showAlert();
-  this.navCtrl.pop();}
-  showAlert() {
-    let alert = this.alertCtrl.create({
-      title: 'Actualizacion Cliente',
-      subTitle: this.model_clientes.nombre+" "+this.model_clientes.apellido+" ha sido modificado",
-      buttons: ['OK']
-    });
-    alert.present();
-  }
+  // this.showAlert();
+  // this.navCtrl.pop();}
+  // showAlert() {
+  //   let alert = this.alertCtrl.create({
+  //     title: 'Actualizacion Cliente',
+  //     subTitle: this.model_clientes.nombre+" "+this.model_clientes.apellido+" ha sido modificado",
+  //     buttons: ['OK']
+  //   });
+  //   alert.present();
+   }
 }

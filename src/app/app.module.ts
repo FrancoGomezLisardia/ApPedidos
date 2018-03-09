@@ -3,38 +3,45 @@ import { ErrorHandler, NgModule }                   from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen }                             from '@ionic-native/splash-screen';
 import { StatusBar }                                from '@ionic-native/status-bar';
+import { AngularFireModule }         from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 
 import { MyApp }                from './app.component';
-import { HomePage }             from '../pages/home/home';
-import { ProductosPage }        from '../pages/productos/productos';
+
+//PAGINAS
+//Clientes
 import { ClientesPage }         from '../pages/clientes/clientes';
-import { PedidosPage }          from '../pages/pedidos/pedidos';
-import { VendedoresPage }       from '../pages/vendedores/vendedores';
-import { SignInPage }           from '../pages/signin/signin';
-import { SignUpPage }           from '../pages/signup/signup';
-import {PerfilPage}             from '../pages/perfil/perfil';
-import {DetallePage}            from '../pages/detalle/detalle';
-import {RegistrarPage}          from '../pages/registrar/registrar';
-import {FormularioPage}          from '../pages/formulario/formulario';
 import {NuevoClientePage}       from '../pages/nuevo-cliente/nuevo-cliente';
-import {AdiminClientesPage}       from '../pages/adimin-clientes/adimin-clientes';
-import { AngularFireModule }         from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule }     from 'angularfire2/auth';
-import { Productos2Page }        from '../pages/productos2/productos2';
-import {  NuevoProductoPage}        from '../pages/nuevo-producto/nuevo-producto';
-import { AuthService } from '../providers/auth-service';
-import { NotesService } from '../providers/notes.servise';
+import {ModificarClientePage}   from '../pages/modificar-cliente/modificar-cliente';
+import {DetalleClientePage}     from '../pages/detalle-cliente/detalle-cliente'
+
+//Productos
+import { ProductosPage }        from '../pages/productos/productos';
+import {DetallePage}            from '../pages/detalle/detalle';
+import {NuevoProductoPage}      from '../pages/nuevo-producto/nuevo-producto';
+import {OrdenesPage}              from       "../pages/ordenes/ordenes";
+import {ModificarProductosPage} from "../pages/modificar-productos/modificar-productos"
 import { CarritoProvider } from '../providers/carrito';
-import { ProductosProvider } from '../providers/productos/productos';
 import {DetalleProductoPage} from "../pages/detalle-producto/detalle-producto";
+
+//Usuarios
+import {RegistrarUsuarioPage} from "../pages/registrar-usuario/registrar-usuario"
+import {InicioSesionPage} from "../pages/inicio-sesion/inicio-sesion";
+import {FormularioPage}          from '../pages/formulario/formulario';
+
+
+
+//Servicios
+import { NotesService } from '../providers/notes.servise';
+import { ProductosProvider } from '../providers/productos/productos';
 
 //Plugins
 import { Camera} from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { CargaImagenProductoProvider } from '../providers/carga-imagen-producto/carga-imagen-producto';
 import { CarroProvider } from '../providers/carro/carro';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 export const firebaseConfig = {
@@ -49,62 +56,59 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    ModificarClientePage,
+    DetalleClientePage,
     ProductosPage,
     ClientesPage,
-    PedidosPage,
-    VendedoresPage,
-    SignInPage ,
-    SignUpPage,
-    PerfilPage,
+    ModificarProductosPage,
+    OrdenesPage,
     NuevoClientePage,
-    Productos2Page,
     NuevoProductoPage,
     DetallePage,
-    RegistrarPage,
     FormularioPage,
-    AdiminClientesPage,
-    DetalleProductoPage
+    DetalleProductoPage,
+    RegistrarUsuarioPage,
+    InicioSesionPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule,
-    AngularFireDatabaseModule
+
+    AngularFireDatabaseModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     ProductosPage,
     ClientesPage,
-    PedidosPage,
-    PerfilPage,
-     VendedoresPage,
+    OrdenesPage,
      NuevoClientePage,
-    SignInPage ,
-    SignUpPage,
-    Productos2Page,
+     ModificarProductosPage,
+     ModificarClientePage,
+    DetalleClientePage,
     NuevoProductoPage,
     DetallePage,
-    RegistrarPage,
     DetalleProductoPage,
     FormularioPage,
-    AdiminClientesPage
+  
+    RegistrarUsuarioPage,
+    InicioSesionPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler },
-    AuthService,
+   
     NotesService,
     CarritoProvider,
     ProductosProvider,
     Camera,
     ImagePicker,
     CargaImagenProductoProvider,
-    CarroProvider
+    CarroProvider,
+    
   ]
 })
 export class AppModule {}

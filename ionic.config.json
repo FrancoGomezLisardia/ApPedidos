@@ -2,7 +2,16 @@
   "name": "SoftwareAppedidos",
   "app_id": "719a1c25",
   "type": "ionic-angular",
+   "proxies": [
+    {
+      "path": "/",
+      "proxyUrl": "https://api.ionicrun:8443/",
+      "rejectUnauthorized": false
+    }
+  ],
   "integrations": {
     "cordova": {}
   }
+
+
 }

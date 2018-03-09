@@ -7,38 +7,97 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Nuevo Cliente</ion-title>
+    <ion-title>nuevo-cliente</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content>
-  <ion-list>
-    <ion-item>
-        <ion-label stacked>Nombre: </ion-label>
-        <ion-input [(ngModel)]="usuario.nombre" type="text" ></ion-input> 
+<ion-content padding>
+  <form [formGroup]="myForm" (ngSubmit)="addCliente()">
+    <ion-list>
+      <ion-item>
+         <ion-icon name="person" item-left></ion-icon>
+         <ion-label stacked>Nombre:</ion-label>
+         <ion-input formControlName="name" type="text" placeholder="Nombre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-icon name="person" item-left></ion-icon>
+          <ion-label stacked>Apellidos:</ion-label>
+          <ion-input formControlName="lastName" type="text" placeholder="Apellidos"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="calendar" item-left></ion-icon>
+        <ion-label stacked>Fecha de nacimiento:</ion-label>
+        <ion-datetime formControlName="dateBirth" displayFormat="MM-DD-YYYY" placeholder="MM-DD-YYY"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="person" item-left></ion-icon>
+        <ion-label stacked>DNI:</ion-label>
+        <ion-input formControlName="DNI" type="text" placeholder="DNI"></ion-input>
     </ion-item>
+    
+      <ion-item>
+        <ion-icon name="call" item-left></ion-icon>
+        <ion-label stacked>Telefono:</ion-label>
+        <ion-input  formControlName="telefono" type="number" placeholder="Telefono"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-icon name="mail" item-left></ion-icon>
+        <ion-label stacked>Correo electrónico</ion-label>
+        <ion-input formControlName="email" type="email" name="email" placeholder="E-mail"></ion-input>
+    </ion-item> 
 
-    <ion-item>
-        <ion-label stacked>Apellido:</ion-label>
-        <!-- <ion-input [(ngModel)]="clientes.apellido" type="text"  required minlength="6"></ion-input> -->
-    </ion-item>
+      <ion-item>
+        <ion-icon name="home" item-left></ion-icon>
+        <ion-label stacked>Domicilio:</ion-label>
+        <ion-input  formControlName="domicilio" type="text" placeholder="Domicilio"></ion-input>
+      </ion-item>
+            
+        
+          
+     </ion-list>
+        <div padding>
+          
+          <button ion-button block type="submit" [disabled]="!myForm.valid">Guardar</button>
+        </div>
+  </form>
+<!-- <ion-list>
+<ion-item>
+    <ion-label stacked>Nombree: </ion-label>
+    <ion-input [(ngModel)]="clientes.nombre" type="text" ></ion-input>
+</ion-item>
 
-    <ion-item>
-      <ion-label stacked>Direccion:</ion-label>
-      <!-- <ion-input [(ngModel)]="clientes.direccion" type="text"  required minlength="6"></ion-input> -->
-  </ion-item>
+<ion-item>
+    <ion-label stacked>Apellido:</ion-label>
+    <ion-input [(ngModel)]="clientes.apellido" type="text"  required minlength="6"></ion-input>
+</ion-item>
 
-  <ion-item>
-    <ion-label stacked>Telefono:</ion-label>
-    <!-- <ion-input [(ngModel)]="clientes.telefono" type="text"  required minlength="6"></ion-input> -->
+<ion-item>
+  <ion-label stacked>Direccion:</ion-label>
+  <ion-input [(ngModel)]="clientes.direccion" type="text"  required minlength="6"></ion-input>
+</ion-item>
+
+<ion-item>
+<ion-label stacked>Telefono:</ion-label>
+<ion-input [(ngModel)]="clientes.telefono" type="text"  required minlength="6"></ion-input>
 </ion-item>
 
 
-    <!-- <div padding-left padding-right padding-top>
-        <button ion-button (click)="Registrar()" block>Registrarse</button>
-    </div> -->
+<div padding-left padding-right padding-top>
+    <button ion-button (click)="Registrar()" block>Registrarse</button>
+</div>
+</ion-list> -->
+<!-- <ion-list>
+<button ion-item *ngFor="let note of notes" (click)="goToNuevoCliente(note.id)">
+  {{ note.title }}
+</button>  
 </ion-list>
-	
+<div padding>
+<button ion-button block (click)="CrearClientes()">Crear Cliente</button>
+</div> -->
 </ion-content>
