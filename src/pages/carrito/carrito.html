@@ -1,0 +1,86 @@
+<!--
+  Generated template for the CarritoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <!-- <ion-buttons>
+      <button ion-button
+              (click)="viewCtrl.dismis()")>
+
+      </button>
+    </ion-buttons> -->
+    <ion-buttons left>
+				<button ion-button menuToggle>
+				 <ion-icon  name="menu"></ion-icon>
+				</button>
+			   </ion-buttons>
+
+    <ion-title text-center >Carrito de Compras</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<div text-center class="carrito_vacio"
+     *ngIf="cip.arreglo.length == 0">
+ 
+   <ion-icon name="ios-cart-outline" 
+             class="icon-5x">
+   </ion-icon>
+   <br>
+   Su carrito esta vacio
+</div>
+ 
+<div *ngIf="cip.arreglo.length > 0">
+  <ion-grid> 
+     <ion-row *ngFor="let item of cip.arreglo; let i=index;">
+      <ion-col>
+         <img style="width: 250px; height: 200px;" [src] ="item.img" >         
+      </ion-col>
+      <ion-col align="center">
+          <br>
+          <br>
+          <br>
+        <strong>{{item.titulo}}</strong><br>
+      
+        <strong>Precio:</strong> {{item.precio | currency:'USD':true}}  <br>
+        <strong>Cantidad:</strong>{{item.cantidad }} <br>
+        <strong>Sub Total:</strong>{{item.sub_total | currency:'USD':true}}    
+        <button ion-button
+                color="danger"
+                outline
+                small
+                block
+                (click)="cip.eliminar_items()">
+          Eliminar
+
+        </button>
+      </ion-col>
+    </ion-row> 
+
+   </ion-grid>
+<hr>
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <h3>
+        <strong>Total:</strong>
+        {{cip. total_carrito  | currency:'USD':true }}
+      </h3>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<button ion-button
+        block
+        (click)="cip.realizar_pedido()">
+  Realizar Pedido
+</button>
+</div> 
+
+</ion-content>

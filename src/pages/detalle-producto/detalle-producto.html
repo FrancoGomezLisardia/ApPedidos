@@ -1,0 +1,57 @@
+<!--
+  Generated template for the DetalleProductoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+      <ion-buttons left>
+          <button ion-button menuToggle>
+           <ion-icon  name="menu"></ion-icon>
+          </button>
+           </ion-buttons>
+    <ion-title text-center>{{product.titulo}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+  <ion-card >
+      <img  style="width: 300px; height: 300px;" [src]="product.img"> 
+      <ion-card-content>
+      <ion-card-title>
+      <strong>Precio:</strong> {{ product.precio  | currency:'USD':true}}
+       <br>
+       <strong>Stock:</strong>  {{ product.stock }}
+        <br>
+       
+       <strong>Cantidad:</strong>  {{this.cantidad}}
+       <button   name ="add" (click)="sumar_cantidad()" >
+          <ion-icon name="add">
+          </ion-icon>
+        </button>
+        <button   (click)="restar_cantidad()" 
+                
+                [disabled]="cantidad==1">
+            <ion-icon name ="remove" >
+              
+            </ion-icon>
+          </button>
+          <br>
+          <strong> Sub-Total: </strong>{{subTotal | currency:'USD':true}}
+      </ion-card-title>
+      
+      </ion-card-content>
+    </ion-card>	
+   
+    
+    
+  <button ion-button block icon-left (click)="agregar_carrito(product)" >
+  <ion-icon name="cart"></ion-icon>
+  Agregar al carrito
+</button>
+</ion-content>

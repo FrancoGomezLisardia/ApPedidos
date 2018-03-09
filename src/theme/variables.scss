@@ -41,13 +41,22 @@ $colors: (
   dark:       #222,
   
 );
+.imagen_productos{
+ padding-left:20px;
+}
 .carrito_vacio{
   position:relative;
   top: 30%;
   font-size: 20px;
 }
+.imagen_de_fondo{
+  background-image: url('../assets/imagenes/azul.jpg')
+}
 .icon-5x{
   font-size:100px;
+}
+.iconos_nuevo_producto{
+font-size:30px;
 }
 .carrito-numero{
   position:absolute;
