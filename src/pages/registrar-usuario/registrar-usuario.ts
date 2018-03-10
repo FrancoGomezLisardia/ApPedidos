@@ -71,7 +71,8 @@ export class RegistrarUsuarioPage {
       dateBirth: ['', Validators.required],
       domicilio:['', Validators.required],
       telefono: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', Validators.required,
+                     Validators.minLength(6)],
       gender: ['', Validators.required],
     });
    

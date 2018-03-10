@@ -19,7 +19,9 @@
 
     <ion-buttons end>
         <button ion-button (click)="modificar()"
-        [disabled]="prod_a_modificar.titulo <=1 || prod_a_modificar.imagenPreview <= 1">
+        [disabled]="prod_a_modificar.titulo <=1 || 
+        prod_a_modificar.precio <=1 ||
+        prod_a_modificar.stock <=1 ">
         
         <ion-icon name="checkmark-circle" 
                   color="secondary"
@@ -34,41 +36,28 @@
 
 
 <ion-content padding>
-    <ion-list>
-
-        <ion-item>
-          <ion-label floating>Descripcion:</ion-label>
-          <ion-input type="text" [(ngModel)]="prod_a_modificar.titulo"></ion-input>
-        </ion-item>
-         <ion-item>
-          <ion-label floating>Precio</ion-label>
-          <ion-input type="number"[(ngModel)]="prod_a_modificar.precio"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label floating>Stock</ion-label>
-          <ion-input type="number"[(ngModel)]="prod_a_modificar.stock"></ion-input>
-        </ion-item>
-        <ion-item *ngIf="imagenPreview">
-            <img style="width: 250px; height: 250px;" [src]="imagenPreview">
-        </ion-item>
-      
-      </ion-list>
-      <ion-grid>
-          <ion-row >
-            <ion-col>
-             <button ion-button block icon-left (click)="seleccionar_imagen()">
-               <ion-icon name="photos"> </ion-icon>
-               Seleccionar
-             </button>
-
-            </ion-col>
-            <ion-col>
-                <button ion-button block icon-left (click)="mostrar_camara()">
-                    <ion-icon name="camera"> </ion-icon>
-                   Camara
-                  </button>
-
-               </ion-col>
-          </ion-row>
-        </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+          <ion-item >
+              <img style="width: 250px; height: 250px;" [src]="imagenPreview">
+          </ion-item>
+      </ion-col>
+      <ion-col>
+          <ion-item>
+              <ion-label floating>Descripcion:</ion-label>
+              <ion-input type="text" [(ngModel)]="prod_a_modificar.titulo"></ion-input>
+            </ion-item>
+             <ion-item>
+              <ion-label floating>Precio</ion-label>
+              <ion-input type="number"[(ngModel)]="prod_a_modificar.precio"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Stock</ion-label>
+              <ion-input type="number"[(ngModel)]="prod_a_modificar.stock"></ion-input>
+            </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+           
 </ion-content>

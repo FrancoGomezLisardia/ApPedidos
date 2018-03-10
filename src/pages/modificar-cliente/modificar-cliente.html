@@ -6,13 +6,87 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>modificar-cliente</ion-title>
+  <ion-navbar color="primary">
+      <ion-buttons left>
+          <button ion-button (click)="cerrarModal()">
+            <ion-icon name="close-circle" 
+                      class="iconos_nuevo_producto"
+                      color="danger">
+            </ion-icon>
+          </button>
+        </ion-buttons>
+    <ion-title text-center >Modificar Cliente</ion-title>
+    <ion-buttons end>
+        <button ion-button (click)="modificar()"
+        >
+        <!-- [disabled]=" cliente_modificar.nombre <=1 || cliente_modificar.apellido <=1 ||
+        cliente_modificar.dni <=1 || cliente_modificar.Telefono <=1||
+        cliente_modificar.domicilio <=1|| cliente_modificar.fecha_Nacimiento ||
+        cliente_modificar. sexo <=1 || cliente_modificar.email<=1" -->
+        <ion-icon name="checkmark-circle" 
+                  color="secondary"
+                  class="iconos_nuevo_producto">
+        </ion-icon>
+        </button>
+  
+      </ion-buttons>
   </ion-navbar>
-
+  
 </ion-header>
 
 
 <ion-content padding>
+    <ion-item>
+        <ion-icon name="person" item-left></ion-icon>
+        <ion-label stacked>Nombre:</ion-label>
+        <ion-input [(ngModel)]="cliente_modificar.nombre" type="text" ></ion-input>
+     </ion-item>
 
+     <ion-item>
+         <ion-icon name="person" item-left></ion-icon>
+         <ion-label stacked>Apellidos:</ion-label>
+         <ion-input [(ngModel)]="cliente_modificar.apellido" type="text" ></ion-input>
+     </ion-item>
+
+     <ion-item>
+       <ion-icon name="calendar" item-left></ion-icon>
+       <ion-label stacked>Fecha de nacimiento:</ion-label>
+       <ion-datetime [(ngModel)]="cliente_modificar.fecha_Nacimiento" displayFormat="MM-DD-YYYY" ></ion-datetime>
+     </ion-item>
+
+     <ion-item>
+       <ion-icon name="person" item-left></ion-icon>
+       <ion-label stacked>DNI:</ion-label>
+       <ion-input [(ngModel)]="cliente_modificar.dni" type="number" placeholder="DNI"></ion-input>
+   </ion-item>
+   
+     <ion-item>
+       <ion-icon name="call" item-left></ion-icon>
+       <ion-label stacked>Telefono:</ion-label>
+       <ion-input  [(ngModel)]="cliente_modificar.Telefono" type="number"></ion-input>
+     </ion-item>
+     
+     <ion-item>
+       <ion-icon name="mail" item-left></ion-icon>
+       <ion-label stacked>Correo electrónico</ion-label>
+       <ion-input [(ngModel)]="cliente_modificar.email" type="email" name="email"></ion-input>
+   </ion-item> 
+
+     <ion-item>
+       <ion-icon name="home" item-left></ion-icon>
+       <ion-label stacked>Domicilio:</ion-label>
+       <ion-input  [(ngModel)]="cliente_modificar.domicilio" type="text" ></ion-input>
+     </ion-item>
+     <ion-row radio-group [(ngModel)]="cliente_modificar.sexo">
+         <ion-item>
+           <ion-icon name="woman" item-left></ion-icon>
+           <ion-label>Mujer</ion-label>
+           <ion-radio value="mujer"></ion-radio>
+         </ion-item>
+         <ion-item>
+           <ion-icon name="man" item-left></ion-icon>
+           <ion-label>Hombre</ion-label>
+           <ion-radio value="hombre"></ion-radio>
+         </ion-item>
+       </ion-row>
 </ion-content>

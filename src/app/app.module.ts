@@ -21,10 +21,10 @@ import { ProductosPage }        from '../pages/productos/productos';
 import {DetallePage}            from '../pages/detalle/detalle';
 import {NuevoProductoPage}      from '../pages/nuevo-producto/nuevo-producto';
 import {OrdenesPage}              from       "../pages/ordenes/ordenes";
-import {ModificarProductosPage} from "../pages/modificar-productos/modificar-productos"
-import { CarritoProvider } from '../providers/carrito';
+import {ModificarProductosPage}   from "../pages/modificar-productos/modificar-productos"
+import { CarritoProvider }       from '../providers/carrito';
 import {DetalleProductoPage} from "../pages/detalle-producto/detalle-producto";
-
+import {CarritoPage}        from "../pages/carrito/carrito";
 //Usuarios
 import {RegistrarUsuarioPage} from "../pages/registrar-usuario/registrar-usuario"
 import {InicioSesionPage} from "../pages/inicio-sesion/inicio-sesion";
@@ -68,7 +68,8 @@ export const firebaseConfig = {
     FormularioPage,
     DetalleProductoPage,
     RegistrarUsuarioPage,
-    InicioSesionPage
+    InicioSesionPage,
+    CarritoPage
   ],
   imports: [
     BrowserModule,
@@ -92,7 +93,7 @@ export const firebaseConfig = {
     DetallePage,
     DetalleProductoPage,
     FormularioPage,
-  
+    CarritoPage,
     RegistrarUsuarioPage,
     InicioSesionPage
   ],

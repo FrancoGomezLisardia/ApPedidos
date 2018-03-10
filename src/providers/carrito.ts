@@ -15,7 +15,7 @@ export class CarritoProvider {
 items:any[]=[];
 cantidad:any;
   constructor(public http: Http,
-  private alertCtrl:AlertController,
+  
   private platform:Platform,
   private storage:Storage) {
     console.log('Hello CarritoProvider Provider');

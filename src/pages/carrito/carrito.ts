@@ -23,5 +23,8 @@ export class CarritoPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CarritoPage');
   }
+  cerrarModal() {
+    this.viewCtrl.dismiss();
+   }
 
 }

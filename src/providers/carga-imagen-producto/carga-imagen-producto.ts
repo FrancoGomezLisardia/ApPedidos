@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { ToastController,Platform } from 'ionic-angular';
 import { FirebaseListObservable, AngularFireDatabase  } from 'angularfire2/database';
 
-import{CarritoProvider}from "../../providers/carrito";
+
 import * as firebase from 'firebase';
 
 import 'rxjs/add/operator/map';
@@ -56,11 +56,11 @@ agregar_carrito(item_parametro:any){
  this.arreglo.push(producto_en_carro);
  console.log(this.arreglo);
  console.log("-----------------------")
-  this.alertCtrl.create({
-    title:"Aviso",
-        subTitle:"Producto cargado al carrito",
-            buttons:["Aceptar"]
-           }).present();
+ let toast = this.toastCtrl.create({
+  message: 'Producto cargado al carrito',
+  duration: 3000
+});
+toast.present();
    this.actualizar_total();
    this.guardar_storage()
    
@@ -146,7 +146,7 @@ actualizar_total(){
             ()=>{
               // TODO BIEN!!
               console.log('Archivo subido');
-              //this.mostrar_Toast('Imagen cargada correctamente');
+              this.mostrar_Toast('Imagen cargada correctamente');
               
               let url = uploadTask.snapshot.downloadURL;
 
@@ -165,7 +165,7 @@ actualizar_total(){
 
     let post: archivoSubir = {
       precio:precio,
-       stock:stock,
+      stock:stock,
       img: url,
       titulo: titulo,
       key: nombreArchivo,
@@ -231,7 +231,7 @@ eliminar_items(idx:number){//Elimina elementos del arreglo que tiene las ordenes
     this.guardar_storage();
 }
 realizar_pedido(){
-  let detalle_pedidos_arreglo:string[]=[];
+ // let detalle_pedidos_arreglo:string[]=[];
   let datosUsuarios:string[]=[]
   let id_pedidos= new Date().valueOf().toString();//id para nodo Pedidos
   let id_Detalle_Pedidos= new Date().valueOf().toString();//id del detalle para cada producto

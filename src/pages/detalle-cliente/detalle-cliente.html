@@ -6,13 +6,47 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>detalle-cliente</ion-title>
+  <ion-navbar color="primary">
+      <ion-buttons left>
+          <button ion-button (click)="cerrarModal()">
+            <ion-icon name="close-circle" 
+                      class="iconos_nuevo_producto"
+                      color="danger">
+            </ion-icon>
+          </button>
+        </ion-buttons>
+    <ion-title text-center >Informacion Cliente</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title class="mayusculas">
+          {{cliente.nombre}} {{cliente.apellido}}
+      </ion-card-title>
+      <strong>Telefono:</strong> {{ cliente.Telefono}}
+      <br>
+      <strong>Email:</strong>  {{ cliente.email }}
+       <br>
+       <strong>DNI:</strong>  {{ cliente.dni }}
+       <br>
+       <strong>Direccion:</strong>  {{ cliente.domicilio }}
+       <br>
+       <strong>Fecha Nacimiento:</strong>  {{ cliente.fecha_Nacimiento }}
+       <br>
+       <strong>Sexo:</strong> {{ cliente.sexo }}
+       
+    </ion-card-content>
+  </ion-card>
+  <ion-fab top right>
+      <button ion-fab mini color="danger" (click)="modificar()">
+        <ion-icon name="create"></ion-icon></button>
+      <button ion-fab mini color="danger"(click)="eliminar()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-fab>
 </ion-content>

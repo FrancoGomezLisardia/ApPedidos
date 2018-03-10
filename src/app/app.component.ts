@@ -30,10 +30,12 @@ export class MyApp {
     this.rootPage = InicioSesionPage;
     this.pages = [
 
-      { titulo: 'Inicio',          component: ProductosPage, icon: 'home'},
-      { titulo: 'Clientes',        component: ClientesPage,  icon: 'person-add'},
-      { titulo: 'Registrar',       component: RegistrarUsuarioPage,    icon: 'person-add'},
-      { titulo: 'Ordenes',         component: OrdenesPage,    icon: 'list-box'},
+      { titulo: 'Inicio',          component: ProductosPage,        icon: 'home'},
+      { titulo: 'Clientes',        component: ClientesPage,         icon: 'person-add'},
+      { titulo: 'Registrar',       component: RegistrarUsuarioPage, icon: 'person-add'},
+      { titulo: 'Ordenes',         component: OrdenesPage,          icon: 'list-box'},
+      { titulo: 'Cerrar Sesion',   component: InicioSesionPage,     icon: 'close-circle'},
+      
      
     ];
 

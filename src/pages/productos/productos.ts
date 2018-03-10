@@ -197,6 +197,8 @@ eliminar(parametro){
   //---------------------------------------------------
  
  irAPaginaCarrito(){
-    this.navCtrl.setRoot("CarritoPage");    
-        }
+  //this.navCtrl.setRoot("CarritoPage");    
+  let modal =this.modalCtrl.create(CarritoPage);
+  modal.present();
+ }
 }
