@@ -19,6 +19,23 @@
 
 
 <ion-content text-center>
+  <ion-item>
+    <h2 >Cliente:
+      <strong  class="mayusculas"
+              *ngFor="let cliente of cliente_lista ">
+              {{ cliente.nombre }} {{ cliente.apellido }}
+      </strong>
+    </h2>
+  </ion-item>
+  <ion-item>
+      <h2 >Proveedor:
+        <strong  class="mayusculas"
+                *ngFor="let usuario of usuario_lista ">
+                {{ usuario.nombre }} {{ usuario.apellido }}
+        </strong>
+      </h2>
+    </ion-item>
+    
   <ion-grid>
     <ion-row *ngFor="let item of pedidos_detalle_DB | async">
       <ion-col>

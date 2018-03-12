@@ -34,21 +34,21 @@
 
 
 <ion-content padding>
-<div *ngIf="cip.arreglo.length > 0">
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-          <strong>Cliente:</strong>
-      </ion-col>
-      <ion-col>
-        <button (click)="buscarCliente()">
-            <ion-icon  name="search"></ion-icon>
-        </button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  
-  
+<div *ngIf="cip.arreglo.length > 0 ">
+
+  <ion-item >
+      <h2 >Cliente:
+        <strong 
+        *ngFor="let cliente of cip.cliente " 
+        class="mayusculas" >
+        {{ cliente.nombre }} {{ cliente.apellido }}
+       </strong>
+     </h2>
+      <h2> </h2>
+      <button ion-button clear item-end (click)="buscarCliente()">
+          <ion-icon  name="search"></ion-icon>
+      </button>
+  </ion-item>
 </div>
 <div text-center class="carrito_vacio"
      *ngIf="cip.arreglo.length == 0">
@@ -100,6 +100,7 @@
   </ion-row>
 </ion-grid>
 <button ion-button
+[disabled]="cip.cliente.lenght<=1"
         block
         (click)="cip.realizar_pedido()">
   Realizar Pedido

@@ -1,9 +1,10 @@
 import { Component }            from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController,ModalController } from 'ionic-angular';
-import { FirebaseListObservable, AngularFireDatabase } from "angularfire2/database";
+import { IonicPage, NavController, NavParams, LoadingController, 
+        AlertController,ModalController,ToastController,ViewController } from 'ionic-angular';
+import { FirebaseListObservable, AngularFireDatabase} from "angularfire2/database";
 import {NuevoClientePage}       from '../../pages/nuevo-cliente/nuevo-cliente';
 import {DetalleClientePage}     from '../../pages/detalle-cliente/detalle-cliente'
-
+import {CargaImagenProductoProvider} from "../../providers/carga-imagen-producto/carga-imagen-producto"
 import firebase from 'firebase';
 
 /**
@@ -26,8 +27,11 @@ export class ClientesPage {
 //------------------------------------------------
  
   constructor( public loadingCtrl: LoadingController,
+    public viewCtrl:ViewController,
+    public cip:CargaImagenProductoProvider,
     public modalCtrl:ModalController,
     public navCtrl: NavController,
+    public toastCtrl:ToastController,
     public alertCtrl: AlertController,
     public fireDatabase: AngularFireDatabase,
        
@@ -53,6 +57,16 @@ export class ClientesPage {
 
     });
       //-------------------------------------------------------
+  }
+  agregarClienteACarrito(cliente){
+     this.cip.cliente=[]
+      this.cip.cliente.push(cliente)
+      console.log(this.cip.cliente)
+      let toast = this.toastCtrl.create({
+        message: 'Cliente asignado al carrito',
+        duration: 3000
+      });toast.present();
+      this.viewCtrl.dismiss();
   }
 
   initializeItems2(): void {

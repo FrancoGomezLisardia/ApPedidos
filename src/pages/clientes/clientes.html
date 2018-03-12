@@ -1,5 +1,10 @@
 <ion-header>
   <ion-navbar color="primary">
+      <ion-buttons left>
+          <button ion-button menuToggle>
+           <ion-icon  name="menu"></ion-icon>
+          </button>
+           </ion-buttons>
     <ion-title text-center>
     Clientes
     </ion-title>
@@ -16,13 +21,14 @@
 
     <ion-list>
         <ion-item *ngFor="let cliente of clientesList ">
-          <!-- <ion-avatar item-start>
-            <img src="img/avatar-finn.png">
-          </ion-avatar> -->
+        
           <h2><strong class="mayusculas">{{ cliente.nombre }} {{ cliente.apellido }}</strong> </h2>
           <h2>Telefono: {{ cliente.Telefono }}</h2>
           <h2>Email: {{ cliente.email }}</h2>
           <button ion-button clear item-end (click)="detalleCliente(cliente)">Ver</button>
+          <button ion-button clear item-end (click)="agregarClienteACarrito(cliente)">
+              <ion-icon  name="cart"></ion-icon>
+          </button>
          
   
     

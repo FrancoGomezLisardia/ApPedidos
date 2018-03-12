@@ -19,10 +19,20 @@ export class OrdenesDetallePage {
   public pedidos_detalle_lista:Array<any>;
   public loadedCountryList:Array<any>;
   public pedidos_detalle_Ref:firebase.database.Reference;
-
+  pedidosRef;
+  public pedidos_lista:Array<any>;
+  
 pedidos_detalle_DB:FirebaseListObservable <any []>;
+pedidos_DB:FirebaseListObservable <any []>;
+
 orden:any;
 codigo_Detalle_Orden;
+id_cliente:any;
+id_usuario:any;
+usuarioRef;
+public usuario_lista:Array<any>;
+clienteRef;
+public cliente_lista:Array<any>;
   constructor(public navCtrl: NavController, 
               public toastCtrl: ToastController,
               public alertCtrl:AlertController,
@@ -34,9 +44,8 @@ console.log("key_pedidos")
  console.log(this.orden.id_Detalle_Pedidos)
   }
   ionViewDidLoad() {
+   
 
-    console.log("CODIGO DETALLES");
-    console.log(this.orden.id_Detalle_Pedidos)
     this.pedidos_detalle_DB = this.afDB.list('/pedidosDetalle', {
       query: {
         orderByChild: 'id_Detalle_Pedidos',
@@ -44,10 +53,54 @@ console.log("key_pedidos")
       }
     }
   )
-  console.log("RESULTADO DE LA CONSULTA");
-  console.log(this.pedidos_detalle_DB)
+//---------------------------------------------------------------------
+//Referencia a nodo pedidos asociado al detalle correspondiente
+  this.pedidosRef  = firebase.database().ref('pedidos')
+                             .orderByChild('id_Detalle_Pedidos')
+                             .equalTo(this.orden.id_Detalle_Pedidos);
 
+ this.pedidosRef.on('value', pedidos_lista => {
+     let pedidos = [];
+     pedidos_lista.forEach( pedido => {
+       pedidos.push(pedido.val());
+       return false;
+     });
+   
+     this.pedidos_lista = pedidos;
+   
+   });
+   console.log(this.pedidos_lista)
+   for(let i of this.pedidos_lista){
+      this.id_cliente=i.id_cliente;
+      this.id_usuario=i.id_usuario
+   }
+ this.usuarioRef=firebase.database().ref('Usuarios')
+                      .orderByChild("id")
+                      .equalTo(this.id_usuario)
+  this.usuarioRef.on('value', usuario_lista => {
+    let usuarios = [];
+    usuario_lista.forEach( usuario => {
+      usuarios.push(usuario.val());
+      return false;
+    });
+  
+    this.usuario_lista = usuarios;
+  });
 
+this.clienteRef=firebase.database().ref('Clientes')
+                      .orderByChild("id")
+                      .equalTo(this.id_cliente)   
+ this.clienteRef.on('value', cliente_lista => {
+  let clientes = [];
+  cliente_lista.forEach( cliente => {
+    clientes.push(cliente.val());
+    return false;
+  });
+
+  this.cliente_lista = clientes;
+ 
+
+});                
    //-------------------------------------------------------
    this.pedidos_detalle_Ref = firebase.database().ref('/pedidosDetalle');
 
@@ -59,9 +112,12 @@ console.log("key_pedidos")
      });
    
      this.pedidos_detalle_lista = detalles;
+    
    
    });
   //-------------------------------------------------------
+
+
 
   }
   borrar_pedidos(){

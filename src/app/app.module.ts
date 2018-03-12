@@ -29,9 +29,9 @@ import {CarritoPage}        from "../pages/carrito/carrito";
 import {RegistrarUsuarioPage} from "../pages/registrar-usuario/registrar-usuario"
 import {InicioSesionPage} from "../pages/inicio-sesion/inicio-sesion";
 import {FormularioPage}          from '../pages/formulario/formulario';
-
-
-
+import {DetalleUsuarioPage}         from '../pages/detalle-usuario/detalle-usuario'
+import {UsuariosPage}       from '../pages/usuarios/usuarios';
+import {ModificarUsuarioPage}         from '../pages/modificar-usuario/modificar-usuario'
 //Servicios
 import { NotesService } from '../providers/notes.servise';
 import { ProductosProvider } from '../providers/productos/productos';
@@ -69,7 +69,10 @@ export const firebaseConfig = {
     DetalleProductoPage,
     RegistrarUsuarioPage,
     InicioSesionPage,
-    CarritoPage
+    CarritoPage,
+    DetalleUsuarioPage,
+    UsuariosPage,
+    ModificarUsuarioPage
   ],
   imports: [
     BrowserModule,
@@ -95,7 +98,10 @@ export const firebaseConfig = {
     FormularioPage,
     CarritoPage,
     RegistrarUsuarioPage,
-    InicioSesionPage
+    InicioSesionPage,
+    DetalleUsuarioPage,
+    UsuariosPage,
+    ModificarUsuarioPage
   ],
   providers: [
     StatusBar,

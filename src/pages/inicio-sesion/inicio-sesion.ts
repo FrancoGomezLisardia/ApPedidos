@@ -74,7 +74,8 @@ crear_arregglo_usuarios(){
          const element =  this.listaDeUsuarios[index];
          if (element.contrasena==this.userModel.password && element.correo==this.userModel.email ) {
             this.guardar_storage(element);
-            console.log("ID Usuario Actual:",this.cip.usuario_actual=element.id)
+            this.cip.usuario_actual.push(element)
+            console.log("ID Usuario Actual:",this.cip.usuario_actual)
             this.navCtrl.setRoot(ProductosPage,{'usuarioLogeado':element});
             return;
          } 

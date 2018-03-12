@@ -40,7 +40,7 @@ this.cliente=this.navParams.get("cliente")
    //modificando su estado a 0
    let confirmar = this.alertCtrl.create({
      title: 'Eliminar',
-     message: '¿Desea eliminar este producto?',
+     message: '¿Desea eliminar este cliente?',
      buttons: [
        {
          text: 'Cancelar',
@@ -66,7 +66,7 @@ this.cliente=this.navParams.get("cliente")
            email:this.cliente.email
    });
    let toast = this.toastCtrl.create({
-    message: 'Cliente Registrado',
+    message: 'Cliente Eliminado',
     duration: 3000
   });
   toast.present();

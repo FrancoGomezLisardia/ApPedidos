@@ -11,7 +11,8 @@ import {OrdenesPage}              from       "../pages/ordenes/ordenes";
 import {InicioSesionPage}                from "../pages/inicio-sesion/inicio-sesion";
 import {RegistrarUsuarioPage} from "../pages/registrar-usuario/registrar-usuario";
 import {CargaImagenProductoProvider} from "../providers/carga-imagen-producto/carga-imagen-producto"
-
+import {DetalleUsuarioPage}         from '../pages/detalle-usuario/detalle-usuario'
+import {UsuariosPage}       from '../pages/usuarios/usuarios';
 @Component({
   templateUrl: 'app.html'
 })
@@ -31,11 +32,12 @@ export class MyApp {
     this.pages = [
 
       { titulo: 'Inicio',          component: ProductosPage,        icon: 'home'},
-      { titulo: 'Clientes',        component: ClientesPage,         icon: 'person-add'},
-      { titulo: 'Registrar',       component: RegistrarUsuarioPage, icon: 'person-add'},
+      { titulo: 'Clientes',        component: ClientesPage,         icon: 'person'},
       { titulo: 'Ordenes',         component: OrdenesPage,          icon: 'list-box'},
-      { titulo: 'Cerrar Sesion',   component: InicioSesionPage,     icon: 'close-circle'},
+      { titulo: 'Proveedores',     component: UsuariosPage   ,     icon: 'person'},
+      { titulo: 'Cerrar Sesion',   component: InicioSesionPage,     icon: 'close-circle'}
       
+     
      
     ];
 

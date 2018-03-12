@@ -21,9 +21,10 @@ export class CargaImagenProductoProvider {
   productos: FirebaseListObservable <any []>;
   ref;
   total_carrito:number=0;//Almacena el total de los precios en el carrito
-  usuario_actual;//contiene id del usuario logeado
+  usuario_actual:any[] = [];//contiene id del usuario logeado
   ordernes:any[]=[]//contiene los datos del nodo pedidos de la base de datos
   imagen="/assets/imagenes/azul.png"//ruta imagen principal
+  cliente:any[] = [];//cliente asiganado al peddio
   constructor( public toastCtrl: ToastController,
                public afDB: AngularFireDatabase,
                
@@ -232,11 +233,16 @@ eliminar_items(idx:number){//Elimina elementos del arreglo que tiene las ordenes
 }
 realizar_pedido(){
  // let detalle_pedidos_arreglo:string[]=[];
-  let datosUsuarios:string[]=[]
+  let id_usuario_actual;
   let id_pedidos= new Date().valueOf().toString();//id para nodo Pedidos
   let id_Detalle_Pedidos= new Date().valueOf().toString();//id del detalle para cada producto
-
-
+  let id_cliente_asignado;
+ for (let index of this.cliente) {//Recorre arreglo del cliente asiganado al carrito
+  id_cliente_asignado=index.id
+ }
+ for (let index of this.usuario_actual) {//Recorre arreglo del usuario logeado
+  id_usuario_actual=index.id
+ }
   
   for (let index = 0; index < this.arreglo.length; index++) {
     let key_detalle_pedido=new Date().valueOf().toString(); //clave del nodo detalle_pedidos
@@ -258,8 +264,8 @@ realizar_pedido(){
  } 
 let pedido_carrito: pedido={
   key_pedidos:id_pedidos,
-  id_usuario:"",
-  id_cliente:"",
+  id_usuario: id_usuario_actual,
+  id_cliente:id_cliente_asignado,
   id_Detalle_Pedidos:id_Detalle_Pedidos,
   Total:this.total_carrito,
 }

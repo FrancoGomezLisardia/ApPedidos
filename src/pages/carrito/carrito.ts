@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController,ModalController } from 'ionic-angular';
 import {CargaImagenProductoProvider} from "../../providers/carga-imagen-producto/carga-imagen-producto"
+import { ClientesPage } from '../clientes/clientes';
 /**
  * Generated class for the CarritoPage page.
  *
@@ -15,6 +16,7 @@ import {CargaImagenProductoProvider} from "../../providers/carga-imagen-producto
 export class CarritoPage {
 
   constructor(public navCtrl: NavController, 
+              public modalCtrl:ModalController,
               public navParams: NavParams,
               private cip:CargaImagenProductoProvider,
               private viewCtrl: ViewController) {
@@ -26,5 +28,8 @@ export class CarritoPage {
   cerrarModal() {
     this.viewCtrl.dismiss();
    }
-
+   buscarCliente(){
+    let modal =this.modalCtrl.create(ClientesPage);
+    modal.present();
+   }
 }

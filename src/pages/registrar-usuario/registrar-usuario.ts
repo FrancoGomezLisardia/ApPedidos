@@ -42,7 +42,8 @@ export class RegistrarUsuarioPage {
       sexo:this.myForm.value.gender,
       tipo_usuario:2,
       correo:this.myForm.value.email,
-      contrasena:this.myForm.value.password
+      contrasena:this.myForm.value.password,
+      estado:1
     }
     this.afDB.object(`/Usuarios/${ id_Usuario }`).update(Nuevo_Usuario);
     
@@ -91,4 +92,5 @@ export class RegistrarUsuarioPage {
   tipo_usuario:number
   correo:string;
   contrasena:number
+  estado:number
 }

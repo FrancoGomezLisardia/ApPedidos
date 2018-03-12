@@ -1,0 +1,46 @@
+<!--
+  Generated template for the UsuariosPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+      <ion-buttons left>
+          <button ion-button menuToggle>
+           <ion-icon  name="menu"></ion-icon>
+          </button>
+           </ion-buttons>
+    <ion-title text-center>Proveedores</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="getItems2($event)" placeholder="Buscar"></ion-searchbar>
+
+  <ion-list>
+      <ion-item *ngFor="let usuario of usuariosList ">
+        <!-- <ion-avatar item-start>
+          <img src="img/avatar-finn.png">
+        </ion-avatar> -->
+        <h2><strong class="mayusculas">{{ usuario.nombre }} {{ usuario.apellido }}</strong> </h2>
+        <h2>Telefono: {{ usuario.telefono }}</h2>
+        <h2>Email: {{ usuario.correo }}</h2>
+        <button ion-button clear item-end (click)="detalleUsuario(usuario)">Ver</button>
+       
+
+  
+          
+      </ion-item>
+    </ion-list> 
+    <ion-fab bottom right>
+        <button ion-fab mini color="danger" (click)="nuevoUsuario()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+    
+        
+      </ion-fab>
+</ion-content>
