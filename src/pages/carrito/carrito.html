@@ -80,7 +80,7 @@
                 outline
                 small
                 block
-                (click)="cip.eliminar_items()">
+                (click)="cip.eliminar_items(item)">
           Eliminar
 
         </button>
@@ -100,7 +100,7 @@
   </ion-row>
 </ion-grid>
 <button ion-button
-[disabled]="cip.cliente.lenght<=1"
+[disabled]="cip.cliente.length==0"
         block
         (click)="cip.realizar_pedido()">
   Realizar Pedido

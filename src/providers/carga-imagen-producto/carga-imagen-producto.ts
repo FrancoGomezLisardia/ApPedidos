@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 import{Storage}from "@ionic/storage";
 import {AlertController} from "ionic-angular"
 import { ProductosPage } from '../../pages/productos/productos';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 @Injectable()
 export class CargaImagenProductoProvider {
   cantidad:number;//Cabtidad de productos del mismo tipo
@@ -40,11 +41,29 @@ this.actualizar_total();
   }
 
 agregar_carrito(item_parametro:any){
-
-   //tiene los atributos del producto en el 
+  if (item_parametro.stock<this.cantidad) {
+   let confirmar=this.alertCtrl.create({
+     title:"Stock",
+     message:"La cantidad ingresada supera el stock disponible",
+     buttons: [{
+      text: 'Aceptar',
+      handler: () => {
+        
+      }
+    }
+  ]
+   });
+   confirmar.present()
+   return;
+   }else{
+    //tiene los atributos del producto en el 
   //carrito mas la cantidad solicitada y
   // el subtotal 
-   let producto_en_carro:carrito={
+  let stockActual= item_parametro.stock-this.cantidad;
+  firebase.database().ref('post/' + item_parametro.key).update({
+      stock:stockActual
+    });
+  let producto_en_carro:carrito={
     precio: item_parametro.precio,
     stock:item_parametro.stock,
     titulo:item_parametro.titulo,
@@ -67,6 +86,9 @@ toast.present();
    
    return;
 
+   }
+
+   
 }
 actualizar_total(){
   this.total_carrito=0;
@@ -226,13 +248,24 @@ cargar_storage(){
   return promesa;
 
 }
+restaurar_stock(parametro){
 
-eliminar_items(idx:number){//Elimina elementos del arreglo que tiene las ordenes
-    this.arreglo.splice(idx,1);
+}
+eliminar_items(parametro,idx:number){//Elimina elementos del arreglo que tiene las ordenes
+    
+  this.arreglo.splice(idx,1);
+    
     this.guardar_storage();
+    console.log("Parametro:",parametro )
+let restaurar_stock=parametro.cantidad+parametro.stock
+    firebase.database().ref('post/' + parametro.key).update({
+      stock:restaurar_stock,
+    });
+    console.log(this.arreglo.length)
 }
 realizar_pedido(){
  // let detalle_pedidos_arreglo:string[]=[];
+
   let id_usuario_actual;
   let id_pedidos= new Date().valueOf().toString();//id para nodo Pedidos
   let id_Detalle_Pedidos= new Date().valueOf().toString();//id del detalle para cada producto

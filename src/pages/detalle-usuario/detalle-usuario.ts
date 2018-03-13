@@ -33,7 +33,7 @@ usuario:any;
       this.viewCtrl.dismiss()
     }
     modificar(){
-      let modal =this.modalCtrl.create(ModificarUsuarioPage,{"cliente":this.usuario});
+      let modal =this.modalCtrl.create(ModificarUsuarioPage,{"usuario":this.usuario});
       modal.present();
     }
     eliminar(parametro){

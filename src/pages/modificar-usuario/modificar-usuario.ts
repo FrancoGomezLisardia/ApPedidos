@@ -51,7 +51,9 @@ export class ModificarUsuarioPage {
   getUsuario(id) {
     return this.afDB.object('Usuarios/'+id);
   }
-
+  cerrarModal() {
+    this.viewCtrl.dismiss();
+   }
   modificar(){
     //Hace una eliminacion logica de los productos
    //modificando su estado a 0
