@@ -6,8 +6,16 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Registrar_Usuario</ion-title>
+  <ion-navbar color="primary">
+      <ion-buttons left>
+          <button ion-button (click)="cerrarModal()">
+            <ion-icon name="close-circle" 
+                      class="iconos_nuevo_producto"
+                      color="danger">
+            </ion-icon>
+          </button>
+      </ion-buttons>
+    <ion-title text-center>Nuevo Usuario</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -38,7 +46,7 @@
       <ion-item>
           <ion-icon name="key" item-left></ion-icon>
           <ion-label stacked>Contraseña</ion-label>
-          <ion-input formControlName="password" type="password" placeholder="Contraseña"></ion-input>
+          <ion-input formControlName="password" type="password" min="6" placeholder="Contraseña"></ion-input>
       </ion-item>
 
       <ion-item>

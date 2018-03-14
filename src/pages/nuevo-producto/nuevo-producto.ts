@@ -28,23 +28,50 @@ estado=1;
   cerrarModal() {
    this.viewCtrl.dismiss();
   }
-  seleccionar_imagen(){
 
-    let opciones:ImagePickerOptions={
-      quality:70,
-      outputType:1,
-      maximumImagesCount:1
+  seleccionar_foto(){
+
+    let opciones:ImagePickerOptions = {
+      quality: 70,
+      outputType: 1,
+      maximumImagesCount: 1
     }
-    this.imagePicker.getPictures( opciones).then((results) => {
+
+
+    this.imagePicker.getPictures(opciones).then((results) => {
+
       for (var i = 0; i < results.length; i++) {
-          //console.log('Image URI: ' + results[i]);
+          // console.log('Image URI: ' + results[i]);
           this.imagenPreview = 'data:image/jpeg;base64,' + results[i];
-          this.imagen64=results[i];
-        }
+          this.imagen64 = results[i];
+      }
+
     }, (err) => {
-      console.log("Error al seleccionar",JSON.stringify(err))
+
+      console.log( "ERROR en selector", JSON.stringify(err) );
+
     });
+
+
   }
+
+  // seleccionar_imagen(){
+
+  //   let opciones:ImagePickerOptions={
+  //     quality:70,
+  //     outputType:1,
+  //     maximumImagesCount:1
+  //   }
+  //   this.imagePicker.getPictures( opciones).then((results) => {
+  //     for (var i = 0; i < results.length; i++) {
+  //         //console.log('Image URI: ' + results[i]);
+  //         this.imagenPreview = 'data:image/jpeg;base64,' + results[i];
+  //         this.imagen64=results[i];
+  //       }
+  //   }, (err) => {
+  //     console.log("Error al seleccionar",JSON.stringify(err))
+  //   });
+  // }
 mostrar_camara(){
   const options: CameraOptions = {
     quality: 50,

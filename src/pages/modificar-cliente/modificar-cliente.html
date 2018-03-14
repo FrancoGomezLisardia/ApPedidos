@@ -14,15 +14,14 @@
                       color="danger">
             </ion-icon>
           </button>
-        </ion-buttons>
+      </ion-buttons>
     <ion-title text-center >Modificar Cliente</ion-title>
     <ion-buttons end>
         <button ion-button (click)="modificar()"
-        >
-        <!-- [disabled]=" cliente_modificar.nombre <=1 || cliente_modificar.apellido <=1 ||
-        cliente_modificar.dni <=1 || cliente_modificar.Telefono <=1||
-        cliente_modificar.domicilio <=1|| cliente_modificar.fecha_Nacimiento ||
-        cliente_modificar. sexo <=1 || cliente_modificar.email<=1" -->
+       [disabled]=" cliente_modificar.nombre ==0 || cliente_modificar.apellido ==0 ||
+        cliente_modificar.dni ==0 || cliente_modificar.Telefono ==0||
+        cliente_modificar.domicilio ==0|| cliente_modificar.fecha_Nacimiento ||
+        cliente_modificar. sexo ==0 || cliente_modificar.email==0"> 
         <ion-icon name="checkmark-circle" 
                   color="secondary"
                   class="iconos_nuevo_producto">
@@ -39,13 +38,13 @@
     <ion-item>
         <ion-icon name="person" item-left></ion-icon>
         <ion-label stacked>Nombre:</ion-label>
-        <ion-input [(ngModel)]="cliente_modificar.nombre" type="text" ></ion-input>
+        <ion-input [(ngModel)]="cliente_modificar.nombre" type="text" pattern ='[a-zA-Z ]*' ></ion-input>
      </ion-item>
 
      <ion-item>
          <ion-icon name="person" item-left></ion-icon>
          <ion-label stacked>Apellidos:</ion-label>
-         <ion-input [(ngModel)]="cliente_modificar.apellido" type="text" ></ion-input>
+         <ion-input [(ngModel)]="cliente_modificar.apellido" type="text" pattern ='[a-zA-Z ]*' ></ion-input>
      </ion-item>
 
      <ion-item>

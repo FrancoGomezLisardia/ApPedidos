@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController,ToastController,AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-
+import firebase from 'firebase';
 import { FirebaseListObservable, AngularFireDatabase  } from 'angularfire2/database';
 /**
  * Generated class for the RegistrarUsuarioPage page.
@@ -16,11 +16,14 @@ import { FirebaseListObservable, AngularFireDatabase  } from 'angularfire2/datab
 })
 export class RegistrarUsuarioPage {
   myForm: FormGroup;
-  
+  lista:Array<any>;
   //DatosFirebase:Firebase_Data;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public formBuilder: FormBuilder,
+              public viewCtrl:ViewController,
+              public toastCtrl:ToastController,
+              public alertCtrl:AlertController,
               private afDB: AngularFireDatabase) {
                 this.myForm = this.createMyForm();
   }
@@ -45,11 +48,59 @@ export class RegistrarUsuarioPage {
       contrasena:this.myForm.value.password,
       estado:1
     }
-    this.afDB.object(`/Usuarios/${ id_Usuario }`).update(Nuevo_Usuario);
     
+    if (this.verificar_correo()) {
+      this.afDB.object(`/Usuarios/${ id_Usuario }`).update(Nuevo_Usuario);
+      let toast = this.toastCtrl.create({
+     message: 'Usuario Registrado',
+     duration: 3000
+   });
+   toast.present();
+     this.viewCtrl.dismiss();
+    }else{
+      let confirmar = this.alertCtrl.create({
+        title: 'Modificar',
+        message: 'El correo ingresado ya existe',
+        buttons: [
+          {
+           
+            text: 'Aceptar',
+            handler: () => {
+                         }
+          }
+        ]
+      });
+      confirmar.present()
+    }
+   
   
   }
+verificar_correo(){
+  let ref;
 
+  
+  ref=firebase.database().ref('Usuarios')
+                        .orderByChild("correo")
+                       .equalTo(this.myForm.value.email)
+    ref.on('value', lista => {
+    let correos = [];
+    lista.forEach( correo => {
+      
+    correos.push(correo.val());
+    console.log("valor",correo.val())
+    return false;
+    });
+    this.lista =correos;
+    
+    });
+    console.log("LISTA:",this.lista)
+    if(this.lista.length>0){
+      return true;
+    }else{
+      return false;
+    }
+   
+}
   private createMyForm(){
    
     return this.formBuilder.group({
@@ -72,13 +123,17 @@ export class RegistrarUsuarioPage {
       dateBirth: ['', Validators.required],
       domicilio:['', Validators.required],
       telefono: ['', Validators.required],
-      password: ['', Validators.required,
-                     Validators.minLength(6)],
+      password: ['',Validators.compose([
+                    Validators.required,
+                    Validators.maxLength(6),
+])],
       gender: ['', Validators.required],
     });
    
   }
-
+  cerrarModal() {
+    this.viewCtrl.dismiss();
+   }
 }
  interface Interface_Usuario{
   nombre:string;

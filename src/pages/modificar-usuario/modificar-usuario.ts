@@ -39,6 +39,7 @@ export class ModificarUsuarioPage {
     public alertCtrl:AlertController,
     public afDB:AngularFireDatabase,
     public toastCtrl:ToastController) {
+      
     this.usuario=this.navParams.get("usuario");
     this.id=this.usuario.id
     this.getUsuario(this.id)
