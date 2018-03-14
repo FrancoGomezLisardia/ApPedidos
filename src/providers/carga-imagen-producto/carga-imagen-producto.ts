@@ -251,15 +251,17 @@ cargar_storage(){
 restaurar_stock(parametro){
 
 }
-eliminar_items(parametro,idx:number){//Elimina elementos del arreglo que tiene las ordenes
-    
+eliminar_items(parametro){//Elimina elementos del arreglo que tiene las ordenes
+    let idx:number
   this.arreglo.splice(idx,1);
     
     this.guardar_storage();
     console.log("Parametro:",parametro )
-let restaurar_stock=parametro.cantidad+parametro.stock
+    console.log("Parametro Cantidad:",parametro.cantidad )
+    console.log("Stock:",parametro.stock )
+    
     firebase.database().ref('post/' + parametro.key).update({
-      stock:restaurar_stock,
+      stock:parametro.stock,
     });
     console.log(this.arreglo.length)
 }

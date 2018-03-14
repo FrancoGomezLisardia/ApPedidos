@@ -54,5 +54,6 @@ subTotal:number;//suma parcial de los productos del mismo tipo
     this.cip.agregar_carrito(product)
     this.navCtrl.setRoot(ProductosPage)
   }
+ 
 }
 

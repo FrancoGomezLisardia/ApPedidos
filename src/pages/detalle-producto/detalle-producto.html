@@ -7,11 +7,14 @@
 <ion-header>
 
   <ion-navbar color="primary">
-      <ion-buttons left>
-          <button ion-button menuToggle>
-           <ion-icon  name="menu"></ion-icon>
-          </button>
-           </ion-buttons>
+    <ion-buttons left>
+      <button ion-button (click)="cerrarModal()">
+        <ion-icon name="close-circle" 
+                  class="iconos_nuevo_producto"
+                  color="danger">
+        </ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title text-center>{{product.titulo}}</ion-title>
   </ion-navbar>
 

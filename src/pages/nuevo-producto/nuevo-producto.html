@@ -21,7 +21,7 @@
 
     <ion-buttons end>
       <button ion-button (click)="registrar()"
-      [disabled]="titulo.lenght <=1 || precio <=1 || imagenPreview <= 1 || stock <=1">
+      [disabled]="titulo.lenght <=1 || precio ==0 || imagenPreview <= 1 || stock ==0">
       <ion-icon name="checkmark-circle" 
                 color="secondary"
                 class="iconos_nuevo_producto">

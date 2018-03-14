@@ -163,7 +163,8 @@ eliminar(parametro){
   
   IrADetalleProducto(parametro:any){
   
-     this.navCtrl.setRoot(DetalleProductoPage,{'producto':parametro});
+    let modal =this.modalCtrl.create(DetalleProductoPage,{'producto':parametro});
+    modal.present();
   }
   initializeItems2(): void {
     this.countryList = this.loadedCountryList;
