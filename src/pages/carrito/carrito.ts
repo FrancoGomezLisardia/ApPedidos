@@ -32,4 +32,8 @@ export class CarritoPage {
     let modal =this.modalCtrl.create(ClientesPage);
     modal.present();
    }
+   realizar_pedido(){
+    this.cip.realizar_pedido()
+    this.viewCtrl.dismiss()
+   }
 }

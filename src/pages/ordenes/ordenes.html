@@ -7,8 +7,12 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    
-    <ion-title text-center >ordenes</ion-title>
+    <ion-buttons left>
+      <button ion-button menuToggle>
+       <ion-icon  name="menu"></ion-icon>
+      </button>
+       </ion-buttons>
+    <ion-title text-center >Pedidos</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -19,7 +23,7 @@
     <button ion-item
             *ngFor="let item of pedidos_DB | async"
             (click)="irAPaginaOrdenesDetalle(item)">
-      <strong>ID Orden:</strong>
+      <strong>ID Pedido:</strong>
       {{item. key_pedidos}}
     </button>
   </ion-list>

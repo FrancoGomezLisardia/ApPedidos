@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController,ToastController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController,ToastController,ViewController} from 'ionic-angular';
 import { FirebaseListObservable,  AngularFireDatabase  } from 'angularfire2/database';
 import firebase from 'firebase';
 import { OrdenesPage } from '../ordenes/ordenes';
@@ -32,14 +32,16 @@ id_usuario:any;
 usuarioRef;
 public usuario_lista:Array<any>;
 clienteRef;
+total;
 public cliente_lista:Array<any>;
   constructor(public navCtrl: NavController, 
+              public viewCtrl:ViewController,
               public toastCtrl: ToastController,
               public alertCtrl:AlertController,
               public navParams: NavParams,
               public afDB: AngularFireDatabase) {
   this.orden=this.navParams.get("orden");
-  
+  this.total=this.orden.Total
 console.log("key_pedidos")
  console.log(this.orden.id_Detalle_Pedidos)
   }
@@ -117,9 +119,10 @@ this.clienteRef=firebase.database().ref('Clientes')
    });
   //-------------------------------------------------------
 
-
-
-  }
+}
+cerrarModal() {
+  this.viewCtrl.dismiss();
+ }
   borrar_pedidos(){
    
     let confirmar = this.alertCtrl.create({
@@ -154,7 +157,7 @@ this.clienteRef=firebase.database().ref('Clientes')
       });
       toast.present();
         
-      this.navCtrl.setRoot(OrdenesPage);
+      this.viewCtrl.dismiss();
           }
         }
       ]

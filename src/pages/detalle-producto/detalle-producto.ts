@@ -52,7 +52,7 @@ subTotal:number;//suma parcial de los productos del mismo tipo
   }
   agregar_carrito(product){
     this.cip.agregar_carrito(product)
-    this.navCtrl.setRoot(ProductosPage)
+    this.viewCtrl.dismiss()
   }
  
 }

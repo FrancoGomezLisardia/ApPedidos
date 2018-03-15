@@ -33,7 +33,7 @@ export class MyApp {
 
       { titulo: 'Inicio',          component: ProductosPage,        icon: 'home'},
       { titulo: 'Clientes',        component: ClientesPage,         icon: 'person'},
-      { titulo: 'Ordenes',         component: OrdenesPage,          icon: 'list-box'},
+      { titulo: 'Pedidos',         component: OrdenesPage,          icon: 'list-box'},
       { titulo: 'Proveedores',     component: UsuariosPage   ,     icon: 'person'},
       { titulo: 'Cerrar Sesion',   component: InicioSesionPage,     icon: 'close-circle'}
       

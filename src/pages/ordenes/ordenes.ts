@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
 
 import { CargaImagenProductoProvider } from '../../providers/carga-imagen-producto/carga-imagen-producto';
 import { FirebaseListObservable, AngularFireDatabase  } from 'angularfire2/database';
@@ -20,6 +20,7 @@ pedidos_DB:FirebaseListObservable <any []>;
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public cip:CargaImagenProductoProvider,
+              public modalCtrl:ModalController,              
               public afDB:AngularFireDatabase) {
                 this.pedidos_DB=this.afDB.list('/pedidos');
   }
@@ -29,7 +30,8 @@ pedidos_DB:FirebaseListObservable <any []>;
     this.cip.cargar_ordenes();
   }
   irAPaginaOrdenesDetalle(item){
-    this.navCtrl.setRoot("OrdenesDetallePage",{"orden":item});
-
+    //this.navCtrl.setRoot("OrdenesDetallePage",{"orden":item});
+    let modal=this.modalCtrl.create(OrdenesDetallePage,{"orden":item})
+    modal.present()
   }
 }

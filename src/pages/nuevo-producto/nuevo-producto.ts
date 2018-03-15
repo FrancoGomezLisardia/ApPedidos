@@ -55,23 +55,6 @@ estado=1;
 
   }
 
-  // seleccionar_imagen(){
-
-  //   let opciones:ImagePickerOptions={
-  //     quality:70,
-  //     outputType:1,
-  //     maximumImagesCount:1
-  //   }
-  //   this.imagePicker.getPictures( opciones).then((results) => {
-  //     for (var i = 0; i < results.length; i++) {
-  //         //console.log('Image URI: ' + results[i]);
-  //         this.imagenPreview = 'data:image/jpeg;base64,' + results[i];
-  //         this.imagen64=results[i];
-  //       }
-  //   }, (err) => {
-  //     console.log("Error al seleccionar",JSON.stringify(err))
-  //   });
-  // }
 mostrar_camara(){
   const options: CameraOptions = {
     quality: 50,
@@ -90,6 +73,7 @@ mostrar_camara(){
    console.log("Error en camara",JSON.stringify(err))
   });
 }
+
 registrar(){
   let archivo={
     img:this.imagen64,
@@ -98,6 +82,6 @@ registrar(){
     precio:this.precio,
     estado:this.estado
   };
-  this.cap.cargar_imagen_firebase(archivo);
+  this.cap.cargar_imagen_firebase(archivo).then(()=>this.cerrarModal() );
 }
 }

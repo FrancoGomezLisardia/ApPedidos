@@ -7,12 +7,16 @@
 <ion-header>
     
   <ion-navbar color="primary">
-      <ion-buttons left>
-          <button ion-button menuToggle>
-           <ion-icon  name="menu"></ion-icon>
-          </button>
-           </ion-buttons>
-    <ion-title text-center>Orden: {{orden.key_pedidos}}</ion-title>
+     <ion-buttons left>
+            <button ion-button (click)="cerrarModal()">
+              <ion-icon name="close-circle" 
+                        class="iconos_nuevo_producto"
+                        color="danger">
+              </ion-icon>
+            </button>
+        </ion-buttons>
+      
+    <ion-title text-center>Pedido: {{orden.key_pedidos}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -54,6 +58,14 @@
           </p>
       </ion-col>
     </ion-row>
+    <ion-row>
+        <ion-col>
+          <h3>
+            <strong>Total:</strong>
+       {{ total | currency:'USD':true }}
+          </h3>
+        </ion-col>
+      </ion-row>
   </ion-grid>
 <button ion-button
         (click)="borrar_pedidos()"

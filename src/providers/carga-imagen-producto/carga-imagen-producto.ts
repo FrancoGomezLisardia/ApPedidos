@@ -28,7 +28,7 @@ export class CargaImagenProductoProvider {
   cliente:any[] = [];//cliente asiganado al peddio
   constructor( public toastCtrl: ToastController,
                public afDB: AngularFireDatabase,
-               
+              
                private alertCtrl:AlertController,
                private platform:Platform,
                private storage:Storage ) {
@@ -72,7 +72,7 @@ agregar_carrito(item_parametro:any){
     cantidad:this.cantidad,
     sub_total:this.subTotal
   }
- console.log("Nuevo arreglo")
+ console.log("Arreglo Carrito")
  this.arreglo.push(producto_en_carro);
  console.log(this.arreglo);
  console.log("-----------------------")
@@ -248,9 +248,7 @@ cargar_storage(){
   return promesa;
 
 }
-restaurar_stock(parametro){
 
-}
 eliminar_items(parametro){//Elimina elementos del arreglo que tiene las ordenes
     let idx:number
   this.arreglo.splice(idx,1);
@@ -286,13 +284,14 @@ realizar_pedido(){
       id_Detalle_Pedidos:id_Detalle_Pedidos,
       nombre_producto:element.titulo,
       imge:element.img,
-      sub_Total:this.subTotal,
-      cantidad:this.cantidad
+      sub_Total:element .sub_total,
+      cantidad:element .cantidad
     
     }
   
     console.log("Interface Detalle Pedidos:", pedidos_detalle)
     this.afDB.object(`/pedidosDetalle/${key_detalle_pedido }`).update(pedidos_detalle)
+    
    // this.afDB.object('/pedidosDetalle').update(pedidos_detalle)
    
        

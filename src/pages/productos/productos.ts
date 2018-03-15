@@ -48,6 +48,7 @@ pedidos:FirebaseListObservable<any>;
       content: 'Cargando Productos. Por favor, espere...'
   });
   loading.present();
+ 
   this.menuCtrl.get().enable(true);
   this.productos=this.fireDatabase.list('post')
   //INFORMACION USUARIO ACTUAL
