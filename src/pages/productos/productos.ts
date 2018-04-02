@@ -58,6 +58,7 @@ pedidos:FirebaseListObservable<any>;
   //-------------------------------------------------
   this.cargar_storage();
     this.cantidadProdEnCarrito=_cap.arreglo.length;
+    console.log("Longitud carro:", _cap.arreglo.length)
     //-------------------------------------------------------
     
    this.countryRef  = firebase.database().ref('post')
