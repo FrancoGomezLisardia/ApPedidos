@@ -18,10 +18,10 @@
     <ion-title text-center >Modificar Cliente</ion-title>
     <ion-buttons end>
         <button ion-button (click)="modificar()"
-       [disabled]=" cliente_modificar.nombre ==0 || cliente_modificar.apellido ==0 ||
-        cliente_modificar.dni ==0 || cliente_modificar.Telefono ==0||
-        cliente_modificar.domicilio ==0|| cliente_modificar.fecha_Nacimiento ||
-        cliente_modificar. sexo ==0 || cliente_modificar.email==0"> 
+       [disabled]=" cliente_modificar.nombre <=1  || cliente_modificar.apellido <=1 || cliente_modificar.dni <=1 ||
+        cliente_modificar.Telefono <=1||
+        cliente_modificar.domicilio <=1|| cliente_modificar.fecha_Nacimiento <=1 ||
+        cliente_modificar. sexo <=1 || cliente_modificar.email <=1" >
         <ion-icon name="checkmark-circle" 
                   color="secondary"
                   class="iconos_nuevo_producto">

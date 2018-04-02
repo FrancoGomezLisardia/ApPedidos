@@ -52,6 +52,9 @@ $colors: (
 .imagen_de_fondo{
   background-image: url('../assets/imagenes/azul.jpg')
 }
+.mayusculas{
+  text-transform: capitalize
+}
 .icon-5x{
   font-size:100px;
 }

@@ -16,7 +16,8 @@ import { FirebaseListObservable, AngularFireDatabase  } from 'angularfire2/datab
 })
 export class RegistrarUsuarioPage {
   myForm: FormGroup;
-  lista:Array<any>;
+  lista:any[]=[];
+  verificar:boolean=false;
   //DatosFirebase:Firebase_Data;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -48,18 +49,18 @@ export class RegistrarUsuarioPage {
       contrasena:this.myForm.value.password,
       estado:1
     }
-    
-    if (this.verificar_correo()) {
+    this.verificar_correo()
+    if (this.lista.length=0) {
       this.afDB.object(`/Usuarios/${ id_Usuario }`).update(Nuevo_Usuario);
       let toast = this.toastCtrl.create({
-     message: 'Usuario Registrado',
+     message: 'Proveedor Registrado',
      duration: 3000
    });
    toast.present();
      this.viewCtrl.dismiss();
     }else{
       let confirmar = this.alertCtrl.create({
-        title: 'Modificar',
+        title: 'Aviso',
         message: 'El correo ingresado ya existe',
         buttons: [
           {
@@ -94,11 +95,6 @@ verificar_correo(){
     
     });
     console.log("LISTA:",this.lista)
-    if(this.lista.length>0){
-      return true;
-    }else{
-      return false;
-    }
    
 }
   private createMyForm(){

@@ -90,7 +90,7 @@ export class ModificarUsuarioPage {
            
    });
    let toast = this.toastCtrl.create({
-    message: 'Usuario Modificado',
+    message: 'Proveedor Modificado',
     duration: 3000
   });
   toast.present();

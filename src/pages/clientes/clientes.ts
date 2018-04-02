@@ -66,7 +66,9 @@ export class ClientesPage {
         message: 'Cliente asignado al carrito',
         duration: 3000
       });toast.present();
-      this.viewCtrl.dismiss();
+      if(this.cip.arreglo.length!=0){
+        this.viewCtrl.dismiss();
+      } 
   }
 
   initializeItems2(): void {

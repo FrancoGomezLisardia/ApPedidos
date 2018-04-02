@@ -76,6 +76,7 @@ pedidos:FirebaseListObservable<any>;
     });
    //-------------------------------------------------------
    loading.dismiss();
+   console.log("Carrito longitud:",this._cap.arreglo.length)
   }
   guardar_storage(){
     //Condicion para saber si la app esta corriendo en dispositivo o pc
