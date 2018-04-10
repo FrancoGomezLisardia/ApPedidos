@@ -76,6 +76,7 @@ crear_arregglo_usuarios(){
             this.guardar_storage(element);
             this.cip.usuario_actual.push(element)
             console.log("ID Usuario Actual:",this.cip.usuario_actual)
+            this.cip.tipo_usuario=element.tipo_usuario
             this.navCtrl.setRoot(ProductosPage,{'usuarioLogeado':element});
             return;
          } 

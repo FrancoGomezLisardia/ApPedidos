@@ -30,7 +30,7 @@ import {OrdenesDetallePage} from "../pages/ordenes-detalle/ordenes-detalle"
 //Usuarios
 import {RegistrarUsuarioPage} from "../pages/registrar-usuario/registrar-usuario"
 import {InicioSesionPage} from "../pages/inicio-sesion/inicio-sesion";
-import {FormularioPage}          from '../pages/formulario/formulario';
+
 import {DetalleUsuarioPage}         from '../pages/detalle-usuario/detalle-usuario'
 import {UsuariosPage}       from '../pages/usuarios/usuarios';
 import {ModificarUsuarioPage}         from '../pages/modificar-usuario/modificar-usuario'
@@ -67,7 +67,7 @@ export const firebaseConfig = {
     NuevoClientePage,
     NuevoProductoPage,
     DetallePage,
-    FormularioPage,
+    
     DetalleProductoPage,
     RegistrarUsuarioPage,
     InicioSesionPage,
@@ -99,7 +99,7 @@ export const firebaseConfig = {
     NuevoProductoPage,
     DetallePage,
     DetalleProductoPage,
-    FormularioPage,
+    
     CarritoPage,
     RegistrarUsuarioPage,
     InicioSesionPage,

@@ -1,5 +1,5 @@
 <ion-header>
-
+	
 		<ion-navbar color="primary">
 			<ion-buttons left>
 				<button ion-button menuToggle>
@@ -26,6 +26,11 @@
 	  </ion-header>
 
 <ion-content padding>
+		<ion-refresher (ionRefresh)="recargar_productos($event)">
+				<ion-refresher-content>
+					Recargando
+				</ion-refresher-content>
+		</ion-refresher>
 		<ion-searchbar (ionInput)="getItems2($event)" placeholder="Buscar"></ion-searchbar>
 		<ion-grid>
 			<ion-row *ngFor="let country of countryList" >
@@ -45,9 +50,11 @@
 						</ion-card>	
 					</button>
 					<ion-fab top right>
-						<button ion-fab mini color="danger" (click)="modificar(country)">
+						<button ion-fab mini color="danger" (click)="modificar(country)"
+						[disabled]=" this._cap.tipo_usuario==2">
 							<ion-icon name="create"></ion-icon></button>
-						<button ion-fab mini color="danger"(click)="eliminar(country)">
+						<button ion-fab mini color="danger"(click)="eliminar(country)"
+						[disabled]=" this._cap.tipo_usuario==2">
 							<ion-icon name="trash"></ion-icon>
 						</button>
 					</ion-fab>
@@ -56,7 +63,8 @@
 		</ion-grid>
 		
 	<ion-fab bottom right>
-		<button ion-fab mini color="danger" (click)="nuevoProducto()">
+		<button ion-fab mini color="danger" (click)="nuevoProducto()"
+		[disabled]=" this._cap.tipo_usuario==2">
 		  <ion-icon name="add"></ion-icon>
 		</button>
 

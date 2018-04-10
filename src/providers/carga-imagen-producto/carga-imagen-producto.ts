@@ -4,6 +4,7 @@ import { ToastController,Platform } from 'ionic-angular';
 import { FirebaseListObservable, AngularFireDatabase  } from 'angularfire2/database';
 
 
+
 import * as firebase from 'firebase';
 
 import 'rxjs/add/operator/map';
@@ -22,10 +23,11 @@ export class CargaImagenProductoProvider {
   productos: FirebaseListObservable <any []>;
   ref;
   total_carrito:number=0;//Almacena el total de los precios en el carrito
-  usuario_actual:any[] = [];//contiene id del usuario logeado
+  usuario_actual:any[] = [];//contiene  usuario logeado
   ordernes:any[]=[]//contiene los datos del nodo pedidos de la base de datos
   imagen="/assets/imagenes/azul.png"//ruta imagen principal
   cliente:any[] = [];//cliente asiganado al peddio
+  tipo_usuario:any;
   constructor( public toastCtrl: ToastController,
                public afDB: AngularFireDatabase,
               
@@ -41,7 +43,8 @@ this.actualizar_total();
   }
 
 agregar_carrito(item_parametro:any){
-  if (item_parametro.stock<this.cantidad) {
+
+  if (item_parametro.stock<this.cantidad) {//Verifica si hay stock
    let confirmar=this.alertCtrl.create({
      title:"Stock",
      message:"La cantidad ingresada supera el stock disponible",
@@ -51,19 +54,16 @@ agregar_carrito(item_parametro:any){
         
       }
     }
-  ]
+   ]
    });
    confirmar.present()
    return;
-   }else{
-    //tiene los atributos del producto en el 
-  //carrito mas la cantidad solicitada y
-  // el subtotal 
-  let stockActual= item_parametro.stock-this.cantidad;
-  firebase.database().ref('post/' + item_parametro.key).update({
+   }else{//HAY STOCK
+   let stockActual= item_parametro.stock-this.cantidad;//Actualiza stock
+   firebase.database().ref('post/' + item_parametro.key).update({
       stock:stockActual
     });
-  let producto_en_carro:carrito={
+    let producto_en_carro:carrito={//CREA UN PRODUCTO PARA AGREAGARLO AL CARRO
     precio: item_parametro.precio,
     stock:item_parametro.stock,
     titulo:item_parametro.titulo,
@@ -71,16 +71,16 @@ agregar_carrito(item_parametro:any){
     key:item_parametro.key,
     cantidad:this.cantidad,
     sub_total:this.subTotal
-  }
- console.log("Arreglo Carrito")
- this.arreglo.push(producto_en_carro);
- console.log(this.arreglo);
- console.log("-----------------------")
- let toast = this.toastCtrl.create({
-  message: 'Producto cargado al carrito',
-  duration: 3000
-});
-toast.present();
+   }
+   console.log("Arreglo Carrito")
+   this.arreglo.push(producto_en_carro);
+   console.log(this.arreglo);
+   console.log("-----------------------")
+   let toast = this.toastCtrl.create({
+   message: 'Producto cargado al carrito',
+   duration: 3000
+   });
+   toast.present();
    this.actualizar_total();
    this.guardar_storage()
    

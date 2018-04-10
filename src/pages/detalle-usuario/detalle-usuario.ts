@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams,ViewController,
   AlertController,ToastController,ModalController } from 'ionic-angular';
 import firebase from 'firebase';
 import {ModificarUsuarioPage} from "../../pages/modificar-usuario/modificar-usuario"
+import {CargaImagenProductoProvider} from "../../providers/carga-imagen-producto/carga-imagen-producto"
 
 /**
  * Generated class for the DetalleUsuarioPage page.
@@ -22,7 +23,9 @@ usuario:any;
     public navParams: NavParams,
     public viewCtrl:ViewController,
     public alertCtrl:AlertController,
-    public modalCtrl:ModalController) {
+    public modalCtrl:ModalController,
+    private _cap:CargaImagenProductoProvider
+  ) {
       this.usuario=this.navParams.get("usuario")
       console.log("USUARIO:",this.usuario)
 

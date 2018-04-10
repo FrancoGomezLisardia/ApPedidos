@@ -5,7 +5,7 @@ import { FirebaseListObservable, AngularFireDatabase } from "angularfire2/databa
 import firebase from 'firebase';
 import {DetalleUsuarioPage}         from '../../pages/detalle-usuario/detalle-usuario'
 import {RegistrarUsuarioPage}       from '../../pages/registrar-usuario/registrar-usuario';
-
+import {CargaImagenProductoProvider} from "../../providers/carga-imagen-producto/carga-imagen-producto";
 
 
 /**
@@ -30,7 +30,8 @@ export class UsuariosPage {
               public navParams: NavParams,
               public modalCtrl:ModalController,
               public alertCtrl: AlertController,
-              public fireDatabase: AngularFireDatabase,) {
+              public fireDatabase: AngularFireDatabase,
+              private _cap:CargaImagenProductoProvider) {
                 this.usuarios = this.fireDatabase.list('/Usuarios');
    
      //-------------------------------------------------------

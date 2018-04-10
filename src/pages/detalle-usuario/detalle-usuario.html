@@ -42,9 +42,11 @@
     </ion-card-content>
   </ion-card>
   <ion-fab top right>
-      <button ion-fab mini color="danger" (click)="modificar()">
+      <button ion-fab mini color="danger" (click)="modificar()"
+      [disabled]=" this._cap.tipo_usuario==2">
         <ion-icon name="create"></ion-icon></button>
-      <button ion-fab mini color="danger"(click)="eliminar()">
+      <button ion-fab mini color="danger"(click)="eliminar()"
+      [disabled]=" this._cap.tipo_usuario==2">
         <ion-icon name="trash"></ion-icon>
       </button>
     </ion-fab>

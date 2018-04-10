@@ -6,7 +6,7 @@ import { SplashScreen }           from '@ionic-native/splash-screen';
 //PAGINAS
 import { ProductosPage }        from '../pages/productos/productos';
 import { ClientesPage }         from '../pages/clientes/clientes';
-import {FormularioPage}         from '../pages/formulario/formulario';
+
 import {OrdenesPage}              from       "../pages/ordenes/ordenes";
 import {InicioSesionPage}                from "../pages/inicio-sesion/inicio-sesion";
 import {RegistrarUsuarioPage} from "../pages/registrar-usuario/registrar-usuario";

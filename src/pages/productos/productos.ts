@@ -53,7 +53,8 @@ pedidos:FirebaseListObservable<any>;
   this.productos=this.fireDatabase.list('post')
   //INFORMACION USUARIO ACTUAL
   this.usuario_actual=this.navParams.get("usuarioLogeado");
-  //console.log("Usuario Actual:"this.usuarioLogeado2);
+
+  console.log("Usuario tipo:", this._cap.tipo_usuario);
 
   //-------------------------------------------------
   this.cargar_storage();
@@ -205,4 +206,13 @@ eliminar(parametro){
   let modal =this.modalCtrl.create(CarritoPage);
   modal.present();
  }
+ recargar_productos(refresher) {
+  console.log('Begin async operation', refresher);
+
+  setTimeout(() => {
+    console.log('Async operation has ended');
+    this._cap.arreglo.length
+    refresher.complete();
+  }, 2000);
+}
 }

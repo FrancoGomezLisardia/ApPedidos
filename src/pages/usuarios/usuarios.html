@@ -37,7 +37,8 @@
       </ion-item>
     </ion-list> 
     <ion-fab bottom right>
-        <button ion-fab mini color="danger" (click)="nuevoUsuario()">
+        <button ion-fab mini color="danger" (click)="nuevoUsuario()"
+        [disabled]=" this._cap.tipo_usuario==2">
           <ion-icon name="add"></ion-icon>
         </button>
     
